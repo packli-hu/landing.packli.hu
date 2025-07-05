@@ -1,28 +1,7 @@
 import { motion } from "framer-motion";
-import React, { useEffect, useState } from "react";
-
-const TAILWIND_FUCHSIA_CLASSES = [
-  "fill-indigo-300 dark:fill-indigo-600",
-  "fill-indigo-400 dark:fill-indigo-500",
-  "fill-indigo-500 dark:fill-indigo-400",
-  "fill-indigo-600 dark:fill-indigo-300",
-  "fill-indigo-700 dark:fill-indigo-200",
-];
+import React from "react";
 
 const Logo = () => {
-  // State for stepped color animation
-  const [step, setStep] = useState(0);
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setStep((prev) => (prev + 1) % TAILWIND_FUCHSIA_CLASSES.length);
-    }, 1000); // 400ms per step ~2s full cycle
-    return () => clearInterval(interval);
-  }, []);
-
-  // Offset each rect's color cycle for a lively effect
-  const getClass = (offset: number) =>
-    TAILWIND_FUCHSIA_CLASSES[(step + offset) % TAILWIND_FUCHSIA_CLASSES.length];
-
   return (
     <motion.div
       whileHover={{ scale: 1.05 }}

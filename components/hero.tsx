@@ -1,13 +1,9 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Play, Gift } from "lucide-react";
-import HeroVideoDialog from "@/components/ui/hero-video-dialog";
-import { WordRotate } from "@/components/magicui/word-rotate";
+import { ArrowRight } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { AnimatedTooltip } from "@/components/ui/animated-tooltip";
-import { Star } from "@/components/custom/star";
 
 const Hero = () => {
   const { resolvedTheme } = useTheme();

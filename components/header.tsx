@@ -62,7 +62,7 @@ const Header = () => {
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [activeSection]);
+  }, [activeSection, navItems]);
 
   const handleNavClick = (item: string) => {
     setIsOpen(false);
@@ -115,7 +115,7 @@ const Header = () => {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
             {/* Nav items */}
-            {Object.keys(navItems).map((key: any, index: any) => (
+            {Object.keys(navItems).map((key: string, index: number) => (
               <motion.button
                 key={key}
                 onClick={() => handleNavClick(key)}
@@ -129,7 +129,7 @@ const Header = () => {
                     : "text-accent-foreground hover:text-indigo-600 dark:hover:text-indigo-400"
                 )}
               >
-                {(navItems as any)[key]}
+                {navItems[key as keyof typeof navItems]}
                 <span
                   className={`absolute -bottom-1 left-0 h-0.5 bg-indigo-600 dark:bg-indigo-400 transition-all ${
                     isActiveItem(key) ? "w-full" : "w-0 group-hover:w-full"
@@ -167,7 +167,7 @@ const Header = () => {
                           "text-indigo-600 dark:text-indigo-400 font-medium"
                       )}
                     >
-                      {(navItems as any)[item]}
+                      {navItems[item as keyof typeof navItems]}
                     </Button>
                   ))}
                   <div className="pt-4">
@@ -175,7 +175,7 @@ const Header = () => {
                       className="w-full"
                       onClick={() => setIsOpen(false)}
                     >
-                      Get Started
+                      Próbáld ki!
                     </RainbowButton>
                   </div>
                 </nav>
