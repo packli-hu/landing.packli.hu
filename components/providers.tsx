@@ -6,23 +6,23 @@ const Providers = () => {
   const providers = [
     {
       name: "Magyar Posta Logisztika",
-      logo: "mpl.svg",
+      logo: "mpl",
     },
     {
       name: "DPD",
-      logo: "dpd.svg",
+      logo: "dpd",
     },
     {
       name: "Packeta",
-      logo: "pck.svg",
+      logo: "pck",
     },
     {
       name: "GLS",
-      logo: "gls.svg",
+      logo: "gls",
     },
     {
       name: "FoxPost",
-      logo: "fxp.svg",
+      logo: "fxp",
     },
   ];
 
@@ -57,12 +57,12 @@ const Providers = () => {
                 className="flex items-center gap-3 mx-8 whitespace-nowrap flex-shrink-0 opacity-50 transition-all duration-300"
               >
                 <img
-                  src={`/providers/${company.logo}`}
+                  src={`/providers/${company.logo}_dark.svg`}
                   alt={company.name}
                   className="block dark:hidden max-h-10"
                 />
                 <img
-                  src={`/providers/inverse/${company.logo}`}
+                  src={`/providers/${company.logo}.svg`}
                   alt={company.name}
                   className="hidden dark:block max-h-10"
                 />

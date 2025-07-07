@@ -6,7 +6,7 @@ import { CustomSubtitle } from "@/components/custom/subtitle";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-import { Cable, ChartNoAxesCombined, Cog, CloudUpload } from "lucide-react";
+import { UserPlus, Blocks, PackageCheck, Truck } from "lucide-react";
 
 const HowItWorks = () => {
   const [activeStep, setActiveStep] = useState(0);
@@ -18,26 +18,26 @@ const HowItWorks = () => {
     {
       id: 1,
       title: "Regisztrálj a Packlira",
-      image: "/screens/4.png",
-      icon: Cable,
+      image: "register",
+      icon: UserPlus,
     },
     {
       id: 2,
       title: "Kösd be a webshopodat",
-      image: "/screens/5.png",
-      icon: ChartNoAxesCombined,
+      image: "integration",
+      icon: Blocks,
     },
     {
       id: 4,
       title: "Válassz szállítási megoldást",
-      image: "/screens/3.png",
-      icon: Cog,
+      image: "upload",
+      icon: Truck,
     },
     {
       id: 5,
       title: "Kövess nyomon mindent",
-      image: "/screens/4.png",
-      icon: CloudUpload,
+      image: "list",
+      icon: PackageCheck,
     },
   ];
 
@@ -161,9 +161,20 @@ const HowItWorks = () => {
               <AnimatePresence mode="wait">
                 <motion.img
                   key={activeStep}
-                  src={steps[activeStep].image}
+                  src={`screens/${steps[activeStep].image}.png`}
                   alt={`${steps[activeStep].title} visualization`}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover dark:hidden"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.5, ease: "easeInOut" }}
+                />
+
+                <motion.img
+                  key={activeStep}
+                  src={`screens/${steps[activeStep].image}_dark.png`}
+                  alt={`${steps[activeStep].title} visualization`}
+                  className="w-full h-full object-cover hidden dark:block"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}

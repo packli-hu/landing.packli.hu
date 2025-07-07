@@ -200,9 +200,6 @@ const Hero = () => {
             </Button>
           </motion.div>
 
-          {/* Loved by thousands badge */}
-
-          {/* Hero Video Dialog */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -211,14 +208,14 @@ const Hero = () => {
           >
             {mounted && (
               <div className={"relative"}>
-                <div className="relative cursor-pointer group">
+                <div className="relative group">
                   <img
                     src={
-                      resolvedTheme === "dark"
-                        ? "/screens/2.png"
-                        : "/screens/5.png"
+                      resolvedTheme != "dark"
+                        ? "/screens/dashboard.png"
+                        : "/screens/dashboard_dark.png"
                     }
-                    className="w-full rounded-2xl shadow-2xl border border-border"
+                    className="w-full rounded-sm shadow-2xl border border-border"
                   />
                 </div>
               </div>
