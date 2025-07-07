@@ -156,7 +156,7 @@ const HowItWorks = () => {
           </div>
 
           {/* Right Side - Fading Images */}
-          <div className="relative w-full  overflow-hidden border border-border shadow-xs shadow-black/5 bg-background">
+          {/*<div className="relative w-full  overflow-hidden border border-border shadow-xs shadow-black/5 bg-background">
             <div className="max-h-[50vh] overflow-hidden">
               <AnimatePresence mode="wait">
                 <motion.img
@@ -182,7 +182,7 @@ const HowItWorks = () => {
                 />
               </AnimatePresence>
             </div>
-          </div>
+          </div>*/}
         </motion.div>
 
         {/* Bottom CTA */}
