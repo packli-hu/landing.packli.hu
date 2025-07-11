@@ -4,6 +4,7 @@ import { ArrowRight } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Providers from "./providers";
 
 const Hero = () => {
   const { resolvedTheme } = useTheme();
@@ -199,6 +200,8 @@ const Hero = () => {
               </Link>
             </Button>
           </motion.div>
+
+          <Providers />
 
           <motion.div
             initial={{ opacity: 0, y: 30 }}

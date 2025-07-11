@@ -89,7 +89,7 @@ const Features = () => {
 
           <CustomSubtitle>
             Válogass a szállítópartnerek között, kövesd nyomon csomagjaidat,
-            pénzügyeidet vagy lépj kapcsolatban személyes kapcsolattartóddal
+            pénzügyeidet vagy lépj kapcsolatba személyes kapcsolattartóddal
             néhány kattintással.
           </CustomSubtitle>
         </motion.div>

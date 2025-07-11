@@ -21,12 +21,17 @@ import { CustomBadge } from "@/components/custom/badge";
 import { CustomSubtitle } from "@/components/custom/subtitle";
 import { CustomTitle } from "@/components/custom/title";
 import Link from "next/link";
+import axios from "axios";
 
 const formSchema = z.object({
-  name: z.string().min(2, "Name must be at least 2 characters"),
-  email: z.string().email("Please enter a valid email address"),
-  subject: z.string().min(5, "Subject must be at least 5 characters"),
-  message: z.string().min(10, "Message must be at least 10 characters"),
+  name: z.string().min(2, "A névnek legalább 2 karaktert kell tartalmaznia"),
+  email: z.string().email("Valós emailcím megadása kötelező"),
+  subject: z
+    .string()
+    .min(5, "A tárgynak legalább 5 karaktert kell tartalmaznia"),
+  message: z
+    .string()
+    .min(10, "Az üzenetnek legalább 10 karaktert kell tartalmaznia"),
 });
 
 const Contact = () => {
@@ -45,14 +50,11 @@ const Contact = () => {
   const onSubmit = async () => {
     setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    await axios.post("https://formsubmit.co/it@packli.hu", form.getValues());
 
-    toast(
-      "Message sent!. Thank you for your message. We'll get back to you soon."
-    );
+    toast("Köszönjük az üzeneted. Hamarosan válaszolunk.");
 
-    form.reset();
+    //form.reset();
     setIsSubmitting(false);
   };
 
@@ -92,8 +94,8 @@ const Contact = () => {
           <CustomTitle>Lépjünk kapcsolatba</CustomTitle>
 
           <CustomSubtitle>
-            Kérdésed van szolgáltatásainkkal kapcsolatban vagy csak mielöbb
-            belevágnál? Így nekünk és felvesszük feled a kapcsolatot.
+            Kérdésed van szolgáltatásainkkal kapcsolatban vagy csak mielőbb
+            belevágnál? Írj nekünk és felvesszük veled a kapcsolatot.
           </CustomSubtitle>
         </motion.div>
 
@@ -168,9 +170,9 @@ const Contact = () => {
                         name="name"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel>Name</FormLabel>
+                            <FormLabel>Név</FormLabel>
                             <FormControl>
-                              <Input placeholder="Your name" {...field} />
+                              <Input placeholder="Név" {...field} />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -184,7 +186,7 @@ const Contact = () => {
                             <FormLabel>Email</FormLabel>
                             <FormControl>
                               <Input
-                                placeholder="your@email.com"
+                                placeholder="email@packli.hu"
                                 type="email"
                                 {...field}
                               />
@@ -200,12 +202,9 @@ const Contact = () => {
                       name="subject"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Subject</FormLabel>
+                          <FormLabel>Tárgy</FormLabel>
                           <FormControl>
-                            <Input
-                              placeholder="What's this about?"
-                              {...field}
-                            />
+                            <Input placeholder="Vágjunk bele!" {...field} />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -217,10 +216,10 @@ const Contact = () => {
                       name="message"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Message</FormLabel>
+                          <FormLabel>Üzenet</FormLabel>
                           <FormControl>
                             <Textarea
-                              placeholder="Tell us more about your project or question..."
+                              placeholder="Örülünk, ha megosztod velünk, mit vársz a legjobban a Packli szolgáltatásaiból."
                               className="min-h-[120px]"
                               {...field}
                             />
@@ -236,7 +235,7 @@ const Contact = () => {
                       className="w-full"
                       disabled={isSubmitting}
                     >
-                      {isSubmitting ? "Sending..." : "Send Message"}
+                      {isSubmitting ? "Küldés..." : "Küldés"}
                     </Button>
                   </form>
                 </Form>

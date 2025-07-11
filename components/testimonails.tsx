@@ -43,13 +43,6 @@ const Testimonials = () => {
         {testimonial.content}
       </p>
       <div className="flex items-center gap-3">
-        <Image
-          src={testimonial.avatar}
-          alt={testimonial.name}
-          width={40}
-          height={40}
-          className="rounded-full object-cover"
-        />
         <div>
           <div className="font-semibold text-foreground">
             {testimonial.name}
@@ -81,7 +74,7 @@ const Testimonials = () => {
           <CustomTitle>Rólunk mondták</CustomTitle>
 
           <CustomSubtitle>
-            A küldeményeknél csak ügyfeleink elégedetségével törödünk többet.
+            A küldeményeknél csak ügyfeleink elégedettségével törödünk többet.
           </CustomSubtitle>
         </motion.div>
       </div>

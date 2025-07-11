@@ -89,7 +89,7 @@ const HowItWorks = () => {
         >
           <CustomBadge>Egy szerződés, számtalan szolgáltatás</CustomBadge>
 
-          <CustomTitle>Így működönk</CustomTitle>
+          <CustomTitle>Így működünk</CustomTitle>
 
           <CustomSubtitle>
             A Packli a kapcsolat a webshopod és a futárszolgáltatok között.

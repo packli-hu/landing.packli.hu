@@ -15,7 +15,6 @@ export default function Page() {
     <div className="min-h-screen">
       <Header />
       <Hero />
-      <Providers />
       <HowItWorks />
       <Features />
       <Testimonials />
