@@ -2,7 +2,6 @@
 
 import Header from "@/components/header";
 import Hero from "@/components/hero";
-import Providers from "@/components/providers";
 import HowItWorks from "@/components/how-it-works";
 import Features from "@/components/features";
 import Testimonials from "@/components/testimonails";
