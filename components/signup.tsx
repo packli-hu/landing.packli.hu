@@ -101,7 +101,10 @@ const SignUp = () => {
                             {...field}
                           />
                         </FormControl>
-                        <FormMessage />
+                        <small data-slot="form-message">
+                          Ha Fuvar.hu felhasználó vagy, az ott megadott email
+                          címet add meg.
+                        </small>
                       </FormItem>
                     )}
                   />
