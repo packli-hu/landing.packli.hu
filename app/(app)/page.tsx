@@ -8,17 +8,18 @@ import Testimonials from "@/components/testimonails";
 import CallToAction from "@/components/call-to-action";
 import Contact from "@/components/contact";
 import Footer from "@/components/footer";
+import SignUp from "@/components/signup";
 
 export default function Page() {
   return (
     <div className="min-h-screen">
       <Header />
       <Hero />
-      <HowItWorks />
+      {/*<HowItWorks /> */}
       <Features />
       <Testimonials />
       <CallToAction />
-      <Contact />
+      <SignUp />
       <Footer />
     </div>
   );
