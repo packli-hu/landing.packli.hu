@@ -14,9 +14,7 @@ import {
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { Mail, Phone, MapPin } from "lucide-react";
 import { toast } from "sonner";
-import { CustomBadge } from "@/components/custom/badge";
 import { CustomSubtitle } from "@/components/custom/subtitle";
 import { CustomTitle } from "@/components/custom/title";
 import axios from "axios";
