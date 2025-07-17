@@ -8,6 +8,7 @@ import { TooltipProvider } from "@radix-ui/react-tooltip";
 const inter = Inter({ subsets: ["latin"] });
 
 import "@/styles/globals.css";
+import { Toaster } from "@/components/ui/sonner";
 
 export const metadata: Metadata = {
   title: {
@@ -58,6 +59,7 @@ export default async function RootLayout({
           disableTransitionOnChange
           enableColorScheme
         >
+          <Toaster></Toaster>
           <TooltipProvider>{children}</TooltipProvider>
         </ThemeProvider>
       </body>

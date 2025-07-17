@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -18,6 +18,7 @@ import { toast } from "sonner";
 import { CustomSubtitle } from "@/components/custom/subtitle";
 import { CustomTitle } from "@/components/custom/title";
 import axios from "axios";
+import ReCAPTCHA from "react-google-recaptcha";
 
 const formSchema = z.object({
   name: z.string().min(2, "A névnek legalább 2 karaktert kell tartalmaznia"),
@@ -26,6 +27,8 @@ const formSchema = z.object({
 
 const SignUp = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -38,11 +41,21 @@ const SignUp = () => {
   const onSubmit = async () => {
     setIsSubmitting(true);
 
-    await axios.post("https://formsubmit.co/it@packli.hu", form.getValues());
+    const token = await recaptchaRef.current?.executeAsync();
+    recaptchaRef.current?.reset();
 
-    toast("Sikeresen feliratkoztál hamarosan értesítünk!");
+    const response = await axios.post("/api/subscribe", {
+      ...form.getValues(),
+      token: token,
+    });
 
-    //form.reset();
+    if (response?.data && response?.data?.success) {
+      toast(response?.data?.message);
+      form.reset();
+    } else {
+      toast.error(response?.data?.error ?? "Ismeretlen hiba történt!");
+    }
+
     setIsSubmitting(false);
   };
 
@@ -107,6 +120,12 @@ const SignUp = () => {
                         </small>
                       </FormItem>
                     )}
+                  />
+
+                  <ReCAPTCHA
+                    sitekey="6LeHGYYrAAAAAM5hBG4fhMn4M6aRQTEj8zrfRoRu"
+                    size="invisible"
+                    ref={recaptchaRef}
                   />
 
                   <Button
