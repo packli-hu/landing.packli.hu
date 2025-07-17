@@ -49,6 +49,7 @@ export async function POST(req: NextRequest) {
       message: `🎉 Köszönjük, hogy feliratkoztál!`,
     });
   } catch (error) {
+    console.log("error", error);
     return NextResponse.json({ error: "Hibás kérés" }, { status: 400 });
   }
 }
