@@ -12,8 +12,8 @@ import { Toaster } from "@/components/ui/sonner";
 
 export const metadata: Metadata = {
   title: {
-    template: "%s | Packli - Hatékony sállítási megoldások üzleti ügyfeleknek",
-    default: "Packli - Hatékony sállítási megoldások üzleti ügyfeleknek!",
+    template: "%s | Packli - Hatékony szállítási megoldások üzleti ügyfeleknek",
+    default: "Packli - Hatékony szállítási megoldások üzleti ügyfeleknek!",
   },
 };
 
