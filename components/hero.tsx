@@ -167,7 +167,7 @@ const Hero = () => {
             className="font-black flex flex-col md:flex-row items-center gap-0.5 md:gap-1.25 justify-center text-3xl lg:text-7xl font-bold mb-4 lg:mb-8 leading-[1.2]"
           >
             <span className="bg-gradient-to-r from-indigo-900 via-blue-900 to-indigo-900 dark:from-gray-50 dark:via-blue-300 dark:to-indigo-900 bg-clip-text text-transparent">
-              Futárszolgálatok gombnyomásra
+              Csomagszállítás gombnyomásra
             </span>
           </motion.h1>
 
@@ -179,8 +179,8 @@ const Hero = () => {
             className="text-base md:text-xl text-muted-foreground mb-6 md:mb-10 max-w-[600px] mx-auto leading-relaxed"
           >
             Egy felület, több szállítási partner, számtalan szolgáltatás - a
-            Packlival a csomagküldésed olcsóbbá és akár teljesen automatikussá
-            válhat.
+            Packlival webshopod csomagszállítása olcsóbbá és akár teljesen
+            automatikussá válhat.
           </motion.p>
 
           <motion.div
@@ -213,6 +213,7 @@ const Hero = () => {
               <div className={"relative"}>
                 <div className="relative group">
                   <img
+                    alt="Kezeld webshopod csomagszállítását egyetlen felületen."
                     src={
                       resolvedTheme != "dark"
                         ? "/screens/dashboard.png"

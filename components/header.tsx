@@ -17,7 +17,7 @@ import { Button } from "@/components/ui/button";
 const Header = () => {
   const navItems = {
     home: "Főoldal",
-    features: "Előnyök",
+    features: "Hatékony csomagszálítás",
     contact: "Kapcsolat",
   };
 
@@ -35,7 +35,6 @@ const Header = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
 
-      // Always set 'home' as active when at the very top
       if (window.scrollY < 50) {
         setActiveSection(Object.keys(navItems)[0]);
         return;
@@ -57,7 +56,6 @@ const Header = () => {
           }
         }
       }
-      // Do not update activeSection if not at top and not in any section (last matched section stays active)
     };
 
     window.addEventListener("scroll", handleScroll);

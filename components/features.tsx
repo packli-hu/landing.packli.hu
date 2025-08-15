@@ -85,7 +85,7 @@ const Features = () => {
         >
           <CustomBadge>Előzd le a konkurencáid</CustomBadge>
 
-          <CustomTitle>Előnyök</CustomTitle>
+          <CustomTitle>Hatékony csomagszálítás</CustomTitle>
 
           <CustomSubtitle>
             Válogass a szállítópartnerek között, kövesd nyomon csomagjaidat,

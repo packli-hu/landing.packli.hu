@@ -10,10 +10,57 @@ const inter = Inter({ subsets: ["latin"] });
 import "@/styles/globals.css";
 import { Toaster } from "@/components/ui/sonner";
 
+const siteUrl = "https://packli.hu";
+const ogImage = `${siteUrl}/og.jpg`;
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: {
-    template: "%s | Packli - Hatékony szállítási megoldások üzleti ügyfeleknek",
-    default: "Packli - Hatékony szállítási megoldások üzleti ügyfeleknek!",
+    template: "%s | Packli - Hatékony csomagszállítás webshopoknak",
+    default: "Packli - Hatékony csomagszállítás webshopoknak",
+  },
+  description:
+    "A Packlival webshopod csomagszállítása olcsóbbá és akár teljesen automatikussá válhat. Kezeld a futárszolgálatokat egyetlen, áttekinthető felületen.",
+  keywords: [
+    "csomagszállítás",
+    "webshop",
+    "futárszolgálat",
+    "logisztika",
+    "Packli",
+  ],
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    url: siteUrl,
+    siteName: "Packli",
+    locale: "hu_HU",
+    title: "Packli - hatékony csomagszállítás webshopoknak",
+    description:
+      "A Packlival webshopod csomagszállítása olcsóbbá és akár teljesen automatikussá válhat. Kezeld a futárszolgálatokat egyetlen, áttekinthető felületen.",
+    images: [
+      {
+        url: ogImage,
+        width: 1200,
+        height: 630,
+        alt: "Packli dashboard - csomagszállítás kezelése egy felületen",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Packli - hatékony csomagszállítás webshopoknak",
+    description:
+      "A Packlival webshopod csomagszállítása olcsóbbá és akár teljesen automatikussá válhat. Kezeld a futárszolgálatokat egyetlen, áttekinthető felületen.",
+    images: [ogImage],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  icons: {
+    icon: "/favicon.ico",
   },
 };
 
@@ -59,7 +106,7 @@ export default async function RootLayout({
           disableTransitionOnChange
           enableColorScheme
         >
-          <Toaster></Toaster>
+          <Toaster />
           <TooltipProvider>{children}</TooltipProvider>
         </ThemeProvider>
       </body>
