@@ -32,7 +32,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "reCAPTCHA hibás" }, { status: 400 });
     }
 
-    const subscribeRes = await fetch("https://beta.packli.hu/api/subscribe", {
+    const subscribeRes = await fetch("https://app.packli.hu/api/subscribe", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: `email=${email}&name=${name}`,
