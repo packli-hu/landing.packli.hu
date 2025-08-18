@@ -216,8 +216,8 @@ const Hero = () => {
                     alt="Kezeld webshopod csomagszállítását egyetlen felületen."
                     src={
                       resolvedTheme != "dark"
-                        ? "/screens/dashboard.png"
-                        : "/screens/dashboard_dark.png"
+                        ? "/screens/dashboard.jpg"
+                        : "/screens/dashboard_dark.jpg"
                     }
                     className="w-full rounded-sm shadow-2xl border border-border"
                   />
