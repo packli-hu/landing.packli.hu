@@ -81,7 +81,7 @@ const SignUp = () => {
           </CustomSubtitle>
 
           {/* Contact Form */}
-          <Card className="border-border/50 w-full max-w-[50%]">
+          <Card className="w-full max-w-full md:max-w-1/2 border-border/50">
             <CardContent className="p-8">
               <Form {...form}>
                 <form
@@ -125,6 +125,7 @@ const SignUp = () => {
                   <ReCAPTCHA
                     sitekey="6LeHGYYrAAAAAM5hBG4fhMn4M6aRQTEj8zrfRoRu"
                     size="invisible"
+                    badge="inline"
                     ref={recaptchaRef}
                   />
 
