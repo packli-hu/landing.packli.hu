@@ -24,14 +24,16 @@ import Link from "next/link";
 import axios from "axios";
 
 const formSchema = z.object({
-  name: z.string().min(2, "A névnek legalább 2 karaktert kell tartalmaznia"),
+  name: z.string().min(3, "A névnek legalább 2 karaktert kell tartalmaznia"),
   email: z.string().email("Valós emailcím megadása kötelező"),
   subject: z
     .string()
-    .min(5, "A tárgynak legalább 5 karaktert kell tartalmaznia"),
+    .min(3, "A tárgynak legalább 5 karaktert kell tartalmaznia")
+    .max(20, "A tárgy maximum 20 karaktert tartalmazhat"),
   message: z
     .string()
-    .min(10, "Az üzenetnek legalább 10 karaktert kell tartalmaznia"),
+    .min(20, "Az üzenetnek legalább 20 karaktert kell tartalmaznia")
+    .max(255, "Az üzenet maximum 255 karaktert tartalmazhat"),
 });
 
 const Contact = () => {
@@ -50,7 +52,7 @@ const Contact = () => {
   const onSubmit = async () => {
     setIsSubmitting(true);
 
-    await axios.post("https://formsubmit.co/it@packli.hu", form.getValues());
+    await axios.post("/api/contact", form.getValues());
 
     toast("Köszönjük az üzeneted. Hamarosan válaszolunk.");
 

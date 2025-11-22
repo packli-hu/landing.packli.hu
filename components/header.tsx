@@ -108,7 +108,7 @@ const Header = () => {
       >
         <Logo
           onClick={() => {
-            handleNavClick("home");
+            window.location.replace("/");
           }}
         />
 

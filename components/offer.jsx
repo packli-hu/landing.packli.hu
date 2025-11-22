@@ -4,6 +4,10 @@ import { Card, CardContent } from "@/components/ui/card";
 
 import InitialForm from "@/components/formStates/InitialForm";
 import { useTheme } from "next-themes";
+import { toast } from "sonner";
+import { useRouter } from "next/router";
+import { redirect } from "next/navigation";
+import axios from "axios";
 
 const Offer = () => {
   const { resolvedTheme } = useTheme();
@@ -17,9 +21,27 @@ const Offer = () => {
   });
 
   const calculateOffer = useCallback(async () => {
-    await new Promise((resolve, reject) => {
-      setTimeout(resolve, 3000);
-    });
+    if (formData.parcelCount <= 30) {
+      await axios
+        .post("/api/acquisition", {
+          parcel_count: formData.parcelCount,
+          parcel_weight: formData.avgWeight,
+        })
+        .then((response) => {
+          if (response.data?.voucher) {
+            window.location.replace(
+              "/pricing?voucher=" + response.data.voucher
+            );
+            return;
+          }
+
+          toast.success("Ajánlatodat hamarosan megkapod....");
+        })
+        .catch((e) => {
+          console.log("e", e);
+          toast.error("Valami hiba történt!");
+        });
+    }
   }, [formData]);
 
   const setData = (field, value) => {
