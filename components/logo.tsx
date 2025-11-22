@@ -1,11 +1,12 @@
 import { motion } from "framer-motion";
 import React from "react";
 
-const Logo = () => {
+const Logo = ({ onClick }: any) => {
   return (
     <motion.div
+      onClick={onClick}
       whileHover={{ scale: 1.05 }}
-      className="flex items-center gap-2 leading-0"
+      className="flex items-center gap-2 leading-0 cursor-pointer"
     >
       {/* Logo Text */}
       <svg

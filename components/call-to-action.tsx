@@ -57,7 +57,7 @@ const CallToAction = () => {
               className="font-semibold"
               onMouseEnter={handleConfetti}
             >
-              <Link href="#subscribe">Próbáld ki elsők között</Link>
+              <Link href="https://app.packli.hu/register">Próbáld ki elsők között</Link>
             </Button>
           </motion.div>
         </motion.div>

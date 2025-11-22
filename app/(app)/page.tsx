@@ -7,17 +7,23 @@ import Testimonials from "@/components/testimonails";
 import CallToAction from "@/components/call-to-action";
 import Footer from "@/components/footer";
 import SignUp from "@/components/signup";
+import FAQ from "@/components/faq";
+import Contact from "@/components/contact";
+import Offer from "@/components/offer";
+import Providers from "@/components/providers";
+import HowItWorks from "@/components/how-it-works";
 
 export default function Page() {
   return (
     <div className="min-h-screen">
       <Header />
       <Hero />
-      {/*<HowItWorks /> */}
+
+      <Offer />
       <Features />
       <Testimonials />
-      <CallToAction />
-      <SignUp />
+      <FAQ />
+      <Contact />
       <Footer />
     </div>
   );

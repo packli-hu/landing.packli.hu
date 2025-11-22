@@ -17,8 +17,8 @@ const HowItWorks = () => {
   const steps = [
     {
       id: 1,
-      title: "Regisztrálj a Packlira",
-      image: "register",
+      title: "Csomagkezelés egyszerűen",
+      image: "manage_parcels",
       icon: UserPlus,
     },
     {
@@ -36,7 +36,7 @@ const HowItWorks = () => {
     {
       id: 5,
       title: "Kövess nyomon mindent",
-      image: "list",
+      image: "tracking",
       icon: PackageCheck,
     },
   ];
@@ -156,25 +156,14 @@ const HowItWorks = () => {
           </div>
 
           {/* Right Side - Fading Images */}
-          {/*<div className="relative w-full  overflow-hidden border border-border shadow-xs shadow-black/5 bg-background">
+          <div className="relative w-full  overflow-hidden border border-border shadow-xs shadow-black/5 bg-background">
             <div className="max-h-[50vh] overflow-hidden">
               <AnimatePresence mode="wait">
                 <motion.img
                   key={activeStep}
                   src={`screens/${steps[activeStep].image}.png`}
                   alt={`${steps[activeStep].title} visualization`}
-                  className="w-full h-full object-cover dark:hidden"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.5, ease: "easeInOut" }}
-                />
-
-                <motion.img
-                  key={activeStep}
-                  src={`screens/${steps[activeStep].image}_dark.png`}
-                  alt={`${steps[activeStep].title} visualization`}
-                  className="w-full h-full object-cover hidden dark:block"
+                  className="w-full h-full object-cover"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
@@ -182,14 +171,14 @@ const HowItWorks = () => {
                 />
               </AnimatePresence>
             </div>
-          </div>*/}
+          </div>
         </motion.div>
 
         {/* Bottom CTA */}
         <div className="text-center mt-16">
           <p className="text-muted-foreground mb-4">Hamarosan indulunk</p>
           <Button size="lg" asChild>
-            <Link href="#subscribe">Próbáld ki elsők között</Link>
+            <Link href="https://app.packli.hu">Próbáld ki elsők között</Link>
           </Button>
         </div>
       </div>

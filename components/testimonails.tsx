@@ -58,7 +58,10 @@ const Testimonials = () => {
   const secondColumn = testimonials.slice(5, 10);
 
   return (
-    <section className="py-24 bg-background overflow-hidden border-b border-border/50">
+    <section
+      className="py-24 bg-background overflow-hidden border-b border-border/50"
+      id="testimonails"
+    >
       <div className="container mx-auto px-6 lg:px-12 mb-16">
         {/* Header */}
         <motion.div

@@ -3,8 +3,16 @@ import { Card, CardContent } from "@/components/ui/card";
 import { CustomBadge } from "@/components/custom/badge";
 import { CustomTitle } from "@/components/custom/title";
 import { CustomSubtitle } from "@/components/custom/subtitle";
-import { Plus, CalendarSync, ReplaceAll, Earth } from "lucide-react";
+import {
+  Plus,
+  CalendarSync,
+  ReplaceAll,
+  Earth,
+  Calculator,
+} from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Button } from "./ui/button";
+import Link from "next/link";
 
 const Features = () => {
   const features = [
@@ -83,15 +91,28 @@ const Features = () => {
           viewport={{ once: true }}
           className="flex items-center justify-center flex-col text-center gap-5 mb-16"
         >
-          <CustomBadge>Előzd le a konkurencáid</CustomBadge>
+          <CustomBadge>Előzd le a konkurenciád</CustomBadge>
 
-          <CustomTitle>Hatékony csomagszálítás</CustomTitle>
+          <CustomTitle>Hatékony csomagszállítás</CustomTitle>
 
           <CustomSubtitle>
-            Válogass a szállítópartnerek között, kövesd nyomon csomagjaidat,
-            pénzügyeidet vagy lépj kapcsolatba személyes kapcsolattartóddal
-            néhány kattintással.
+            Kösd össze a webshopod a Packlival, válogass a szállítópartnerek
+            között, és kínálj változatos szállítási megoldásokat vásárlóidnak.
+            Kövesd nyomon csomagjaidat, pénzügyeidet vagy lépj kapcsolatba
+            személyes kapcsolattartóddal néhány kattintással.
           </CustomSubtitle>
+
+          <Button
+            size="lg"
+            variant="outline"
+            className="cursor-pointer w-46"
+            asChild
+          >
+            <Link href="#offer">
+              <Calculator className="h-5 w-5 transition-transform opacity-60" />
+              Árajánlatot kérek
+            </Link>
+          </Button>
         </motion.div>
 
         {/* Features Grid */}

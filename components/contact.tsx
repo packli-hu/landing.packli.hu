@@ -66,13 +66,13 @@ const Contact = () => {
     },
     {
       icon: Phone,
-      title: "Phone",
-      content: "+1 (555) 123-4567",
+      title: "Telefon",
+      content: "+36 30 494 6711",
     },
     {
       icon: MapPin,
-      title: "Address",
-      content: "123 Business St, Suite 100\nSan Francisco, CA 94102",
+      title: "Cím",
+      content: "Budapest, Lajos u. 126-130, 1036",
     },
   ];
 

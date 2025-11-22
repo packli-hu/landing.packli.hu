@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Calculator, Gift } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useState, useEffect } from "react";
 import Link from "next/link";
@@ -24,7 +24,7 @@ const Hero = () => {
 
   return (
     <section
-      className="relative lg:min-h-screen bg-gradient-to-br from-gray-50 dark:from-zinc-950 via-indigo-50 dark:via-black to-indigo-50 dark:to-zinc-950 pt-25 pb-20 lg:pt-40 lg:pb-20 overflow-hidden group"
+      className="relative bg-gradient-to-br from-gray-50 dark:from-zinc-950 via-indigo-50 dark:via-black to-indigo-50 dark:to-zinc-950 pt-25 pb-20 lg:pt-40 lg:pb-20 overflow-hidden group"
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >
@@ -194,16 +194,28 @@ const Hero = () => {
               className="cursor-pointer hover:[&_svg]:translate-x-1"
               asChild
             >
-              <Link href={"#subscribe"}>
-                Próbáld ki az elsők között
+              <Link href={"https://app.packli.hu/register"}>
+                Ingyenes regisztráció
                 <ArrowRight className="h-5 w-5 transition-transform" />
+              </Link>
+            </Button>
+
+            <Button
+              size="lg"
+              variant="outline"
+              className="cursor-pointer w-46"
+              asChild
+            >
+              <Link href="#offer">
+                <Calculator className="h-5 w-5 transition-transform opacity-60" />
+                Árajánlatot kérek
               </Link>
             </Button>
           </motion.div>
 
           <Providers />
 
-          <motion.div
+          {/*<motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
@@ -224,7 +236,7 @@ const Hero = () => {
                 </div>
               </div>
             )}
-          </motion.div>
+          </motion.div>*/}
         </div>
       </div>
     </section>

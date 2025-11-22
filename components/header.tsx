@@ -13,11 +13,12 @@ import { cn } from "@/lib/utils";
 import { useTheme } from "next-themes";
 import { Sun, Moon } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 const Header = () => {
   const navItems = {
-    home: "Főoldal",
-    features: "Hatékony csomagszálítás",
+    offer: "Ajánlatkérés",
+    testimonails: "Referenciák",
     contact: "Kapcsolat",
   };
 
@@ -40,8 +41,7 @@ const Header = () => {
         return;
       }
 
-      // Track active section based on scroll position
-      const sections = ["features", "how-it-works", "contact"];
+      const sections = ["offer", "testimonials", "contact"];
       const scrollPosition = window.scrollY + 200;
       for (const section of sections) {
         const element = document.getElementById(section);
@@ -64,8 +64,7 @@ const Header = () => {
 
   const handleNavClick = (item: string) => {
     setIsOpen(false);
-    if (item === Object.keys(navItems)[0]) {
-      // Scroll to top of page for Home link
+    if (item == "home") {
       window.scrollTo({
         top: 0,
         behavior: "smooth",
@@ -107,7 +106,11 @@ const Header = () => {
           "container mx-auto px-6 py-4 flex items-center justify-between"
         )}
       >
-        <Logo />
+        <Logo
+          onClick={() => {
+            handleNavClick("home");
+          }}
+        />
 
         <div className="flex items-center gap-2.5">
           {/* Desktop Navigation */}
@@ -169,11 +172,8 @@ const Header = () => {
                     </Button>
                   ))}
                   <div className="pt-4">
-                    <RainbowButton
-                      className="w-full"
-                      onClick={() => setIsOpen(false)}
-                    >
-                      Próbáld ki!
+                    <RainbowButton className="w-full">
+                      <Link href={"https://app.packli.hu"}>Próbáld ki!</Link>
                     </RainbowButton>
                   </div>
                 </nav>

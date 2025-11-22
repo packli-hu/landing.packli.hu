@@ -1,3 +1,4 @@
+"use client";
 import { motion } from "framer-motion";
 import { Facebook, X, Linkedin, Mail } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
@@ -6,10 +7,19 @@ import Logo from "@/components/logo";
 const Footer = () => {
   const socialLinks = [
     { icon: Facebook, href: "#", label: "Facebook" },
-    { icon: Linkedin, href: "#", label: "LinkedIn" },
-    { icon: X, href: "#", label: "X (Twitter)" },
     { icon: Mail, href: "mailto:hello@packli.hu", label: "Email" },
   ];
+
+  const links = {
+    "A Packliról": {
+      Ajánlatkérés: "#offer",
+      "Hatékony csomagszállítás": "#features",
+      Referenciák: "#testimonails",
+      Kapcsolat: "#contact",
+    },
+    Hasznos: { Segítségközpont: "#", Integrációk: "#", Changelog: "#" },
+    Jog: { ÁSZF: "/doc/terms", Adatkezelés: "/doc/privacy" },
+  };
 
   return (
     <footer className="bg-background relative overflow-hidden">
@@ -27,7 +37,7 @@ const Footer = () => {
                 <Logo />
               </div>
               <p className="text-muted-foreground mb-6 max-w-sm">
-                Egy felület, több szállítási partner, számtalan szolgáltatás - a
+                Egy felület, több szállítási partner, számtalan szolgáltatás a
                 Packlival a csomagküldésed olcsóbbá és akár teljesen
                 automatikussá válhat.
               </p>
@@ -53,7 +63,6 @@ const Footer = () => {
             id="subscribe"
           ></div>
 
-          {/* 3 Column Menu - Right aligned 
           <div className="w-full grow lg:w-auto lg:grow-0 lg:w-2/3 flex justify-end">
             <div className="w-full lg:w-auto flex justify-between flex-wrap lg:grid lg:grid-cols-3 gap-8 lg:gap-16">
               {Object.entries(links).map(([category, items], categoryIndex) => (
@@ -68,10 +77,10 @@ const Footer = () => {
                     {category}
                   </h3>
                   <ul className="text-base space-y-2">
-                    {items.map((item, index) => (
+                    {Object.keys(items).map((item, index) => (
                       <li key={index}>
                         <a
-                          href="#"
+                          href={Object.values(items)[index] as any}
                           className="text-accent-foreground hover:text-indigo-600 transition-colors hover:underline"
                         >
                           {item}
@@ -82,7 +91,7 @@ const Footer = () => {
                 </motion.div>
               ))}
             </div>
-          </div>*/}
+          </div>
         </div>
 
         <Separator className="my-6 bg-border/50" />
