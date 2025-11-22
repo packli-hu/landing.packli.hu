@@ -12,11 +12,9 @@ import axios from "axios";
 const Offer = () => {
   const { resolvedTheme } = useTheme();
 
-  const [avgWeight, setAvgWeight] = useState(0);
   const [parcelCount, setParcelCount] = useState(0);
 
   const [formData, setFormData] = useState({
-    avgWeight: avgWeight,
     parcelCount: parcelCount,
   });
 
@@ -25,7 +23,6 @@ const Offer = () => {
       await axios
         .post("/api/acquisition", {
           parcel_count: formData.parcelCount,
-          parcel_weight: formData.avgWeight,
         })
         .then((response) => {
           if (response.data?.voucher) {

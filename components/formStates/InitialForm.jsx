@@ -14,8 +14,6 @@ import { z } from "zod";
 import { useState } from "react";
 
 export default function InitialForm({ data, setData, calculateOffer }) {
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
   const formSchema = z.object({
     weight: z.union([
       z.literal("").transform(() => undefined),
@@ -24,17 +22,12 @@ export default function InitialForm({ data, setData, calculateOffer }) {
         .max(31.5, "Maximum 31.5 kg")
         .min(1, "Minimum 1 kg megadása kötelező"),
     ]),
-    count: z.union([
-      z.literal("").transform(() => undefined),
-      z.coerce.number().min(1, "Minimum 1 db megadása kötelező"),
-    ]),
   });
 
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
       weight: parseInt(data.avgWeight),
-      count: parseInt(data.parcelCount),
     },
   });
 
@@ -69,26 +62,6 @@ export default function InitialForm({ data, setData, calculateOffer }) {
                       {...field}
                     />
                   </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="weight"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Csomagok jellemző súlya (kg):</FormLabel>
-                  <FormControl>
-                    <Input
-                      type="number"
-                      placeholder="Csomagok jellemző súlya"
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormLabel className="text-gray-400">
-                    max. 31,5 kg és 300 cm övméret
-                  </FormLabel>
                   <FormMessage />
                 </FormItem>
               )}
