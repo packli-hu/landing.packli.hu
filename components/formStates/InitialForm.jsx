@@ -17,13 +17,17 @@ export default function InitialForm({ data, setData, calculateOffer }) {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const formSchema = z.object({
-    weight: z
-      .number("Szám megadása kötelező")
-      .max(31.5, "Maximum 31.5 kg")
-      .min(1, "Minimum 1 kg megadása kötelező"),
-    count: z
-      .number("Szám megadása kötelező")
-      .min(1, "Minimum 1 db megadása kötelező"),
+    weight: z.union([
+      z.literal("").transform(() => undefined),
+      z.coerce
+        .number()
+        .max(31.5, "Maximum 31.5 kg")
+        .min(1, "Minimum 1 kg megadása kötelező"),
+    ]),
+    count: z.union([
+      z.literal("").transform(() => undefined),
+      z.coerce.number().min(1, "Minimum 1 db megadása kötelező"),
+    ]),
   });
 
   const form = useForm({
@@ -63,10 +67,6 @@ export default function InitialForm({ data, setData, calculateOffer }) {
                       placeholder="Havi csomagszám"
                       type="number"
                       {...field}
-                      onChange={(e) => {
-                        const value = e.target.value;
-                        field.onChange(isNaN(value) ? value : Number(value));
-                      }}
                     />
                   </FormControl>
                   <FormMessage />
@@ -84,10 +84,6 @@ export default function InitialForm({ data, setData, calculateOffer }) {
                       type="number"
                       placeholder="Csomagok jellemző súlya"
                       {...field}
-                      onChange={(e) => {
-                        const value = e.target.value;
-                        field.onChange(isNaN(value) ? value : Number(value));
-                      }}
                     />
                   </FormControl>
                   <FormLabel className="text-gray-400">
@@ -99,13 +95,8 @@ export default function InitialForm({ data, setData, calculateOffer }) {
             />
           </div>
 
-          <Button
-            size="lg"
-            type="submit"
-            className="w-full cursor-pointer"
-            disabled={isSubmitting}
-          >
-            {isSubmitting ? "Ajánlat készítése..." : "Ajánlatot kérek"}
+          <Button size="lg" type="submit" className="w-full cursor-pointer">
+            Ajánlatot kérek
           </Button>
         </form>
       </Form>
