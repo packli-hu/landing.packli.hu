@@ -13,8 +13,6 @@ export default function Page() {
   const searchParams = useSearchParams();
 
   useEffect(() => {
-    console.log("voucher", searchParams.get("voucher"));
-
     setPricingData(false);
     axios
       .get(`/api/pricing?voucher=${searchParams.get("voucher") ?? null}`)
@@ -23,9 +21,7 @@ export default function Page() {
           setPricingData(response?.data);
         }
       })
-      .catch((e) => {
-        console.log("error", e);
-      });
+      .catch((e) => {});
   }, [searchParams]);
 
   return (

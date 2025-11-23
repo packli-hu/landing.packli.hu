@@ -61,7 +61,6 @@ const Offer = () => {
   };
 
   const setData = (field, value) => {
-    alert("settingData: " + field + "|" + value);
     setFormData((prev) => ({
       ...prev,
       [field]: value,
