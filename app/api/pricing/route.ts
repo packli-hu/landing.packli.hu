@@ -11,6 +11,7 @@ export async function GET(req: NextRequest) {
     );
     return NextResponse.json(response.data, { status: response.status });
   } catch (e) {
+    console.log("e", e);
     return NextResponse.json({ error: "Hibás kérés" }, { status: 400 });
   }
 }

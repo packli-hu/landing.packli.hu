@@ -9,8 +9,6 @@ import { CustomBadge } from "@/components/custom/badge";
 import { CustomTitle } from "@/components/custom/title";
 import { CustomSubtitle } from "@/components/custom/subtitle";
 
-import Link from "next/link";
-
 const FAQ = () => {
   const faqs = [
     {

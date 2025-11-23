@@ -1,16 +1,11 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Calculator, Gift } from "lucide-react";
-import { useTheme } from "next-themes";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import Providers from "./providers";
 
 const Hero = () => {
-  const { resolvedTheme } = useTheme();
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => setMounted(true), []);
-
   // Mouse parallax state
   const [mouse, setMouse] = useState({ x: 0, y: 0 });
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {

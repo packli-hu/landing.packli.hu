@@ -5,7 +5,7 @@ export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
 
-    let reqOptions = {
+    const reqOptions = {
       url: "https://app.packli.hu/api/landing/contact",
       method: "POST",
       headers: {
@@ -14,7 +14,7 @@ export async function POST(req: NextRequest) {
       data: JSON.stringify(body),
     };
 
-    let response = await axios.request(reqOptions);
+    const response = await axios.request(reqOptions);
 
     return NextResponse.json(response.data, { status: response.status });
   } catch (e) {

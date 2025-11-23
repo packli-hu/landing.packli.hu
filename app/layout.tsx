@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactNode, Suspense } from "react";
 import { Inter } from "next/font/google";
 import { cn } from "@/lib/utils";
 import { Metadata } from "next";
@@ -107,7 +107,9 @@ export default async function RootLayout({
           enableColorScheme
         >
           <Toaster />
-          <TooltipProvider>{children}</TooltipProvider>
+          <TooltipProvider>
+            <Suspense>{children}</Suspense>
+          </TooltipProvider>
         </ThemeProvider>
       </body>
     </html>

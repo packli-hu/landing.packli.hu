@@ -1,6 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
-import { Facebook, X, Linkedin, Mail } from "lucide-react";
+import { Facebook, Mail } from "lucide-react";
 import { Separator } from "@/components/ui/separator";
 import Logo from "@/components/logo";
 
