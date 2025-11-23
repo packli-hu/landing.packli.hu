@@ -11,23 +11,19 @@ import {
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { useState } from "react";
 
 export default function InitialForm({ data, setData, calculateOffer }) {
   const formSchema = z.object({
-    weight: z.union([
+    count: z.union([
       z.literal("").transform(() => undefined),
-      z.coerce
-        .number()
-        .max(31.5, "Maximum 31.5 kg")
-        .min(1, "Minimum 1 kg megadása kötelező"),
+      z.coerce.number().min(1, "Minimum 1 db megadása kötelező"),
     ]),
   });
 
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      weight: parseInt(data.avgWeight),
+      count: parseInt(data.parcelCount),
     },
   });
 
@@ -39,12 +35,13 @@ export default function InitialForm({ data, setData, calculateOffer }) {
         böngészd át árajánlatunkat, és készítsd el Packli fiókodat néhány perc
         alatt.
       </p>
-      <Form {...form}>
+      <Form {...form} key={"initial-form"}>
         <form
           onSubmit={form.handleSubmit((e) => {
-            setData("avgWeight", e.weight);
             setData("parcelCount", e.count);
-            calculateOffer();
+            calculateOffer({
+              parcelCount: e.count,
+            });
           })}
           className="space-y-6"
         >

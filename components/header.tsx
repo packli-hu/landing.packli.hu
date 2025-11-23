@@ -139,7 +139,9 @@ const Header = () => {
               </motion.button>
             ))}
 
-            <Button variant="default">Próbáld ki!</Button>
+            <Button variant="default">
+              <Link href={"https://app.packli.hu/register"}>Próbáld ki!</Link>
+            </Button>
           </nav>
 
           {/* Mobile Navigation */}

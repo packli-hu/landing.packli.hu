@@ -2,27 +2,27 @@ import { useCallback, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 
-import InitialForm from "@/components/formStates/InitialForm";
+import InitialForm from "@/components/acquisition/InitialForm";
+import AcquisitionForm from "@/components/acquisition/AcquisitionForm";
 import { useTheme } from "next-themes";
 import { toast } from "sonner";
-import { useRouter } from "next/router";
-import { redirect } from "next/navigation";
 import axios from "axios";
+import confetti from "canvas-confetti";
 
 const Offer = () => {
   const { resolvedTheme } = useTheme();
 
-  const [parcelCount, setParcelCount] = useState(0);
+  const [acquisitionState, setAcquisitionState] = useState("initial");
 
   const [formData, setFormData] = useState({
-    parcelCount: parcelCount,
+    parcelCount: 0,
   });
 
-  const calculateOffer = useCallback(async () => {
-    if (formData.parcelCount <= 30) {
-      await axios
+  const calculateOffer = (data) => {
+    if (data.parcelCount <= 30) {
+      axios
         .post("/api/acquisition", {
-          parcel_count: formData.parcelCount,
+          parcel_count: data.parcelCount,
         })
         .then((response) => {
           if (response.data?.voucher) {
@@ -38,10 +38,30 @@ const Offer = () => {
           console.log("e", e);
           toast.error("Valami hiba történt!");
         });
+    } else {
+      if (acquisitionState != "details") {
+        setAcquisitionState("details");
+        return;
+      }
+
+      axios
+        .post("/api/acquisition", {
+          parcel_count: formData.parcelCount,
+          ...data,
+        })
+        .then((response) => {
+          toast.success("Ajánlatoddal hamarosan megkeresünk! Köszönjük!");
+          confetti();
+        })
+        .catch((e) => {
+          console.log("e", e);
+          toast.error("Valami hiba történt!");
+        });
     }
-  }, [formData]);
+  };
 
   const setData = (field, value) => {
+    alert("settingData: " + field + "|" + value);
     setFormData((prev) => ({
       ...prev,
       [field]: value,
@@ -84,12 +104,23 @@ const Offer = () => {
             viewport={{ once: true }}
           >
             <Card className="border-border/50">
-              <CardContent className="p-8 py-4">
-                <InitialForm
-                  data={formData}
-                  setData={setData}
-                  calculateOffer={calculateOffer}
-                />
+              <CardContent
+                className="p-8 py-4"
+                key={acquisitionState + "-state"}
+              >
+                {acquisitionState == "details" ? (
+                  <AcquisitionForm
+                    data={formData}
+                    setData={setData}
+                    calculateOffer={calculateOffer}
+                  />
+                ) : (
+                  <InitialForm
+                    data={formData}
+                    setData={setData}
+                    calculateOffer={calculateOffer}
+                  />
+                )}
               </CardContent>
             </Card>
           </motion.div>
