@@ -6,18 +6,22 @@ import Logo from "@/components/logo";
 
 const Footer = () => {
   const socialLinks = [
-    { icon: Facebook, href: "#", label: "Facebook" },
+    {
+      icon: Facebook,
+      href: "https://facebook.com/packli.hungary",
+      label: "Facebook",
+    },
     { icon: Mail, href: "mailto:hello@packli.hu", label: "Email" },
   ];
 
   const links = {
     "A Packliról": {
-      Ajánlatkérés: "#offer",
+      Ajánlatkérés: "/#offer",
       "Hatékony csomagszállítás": "#features",
-      Referenciák: "#testimonails",
-      Kapcsolat: "#contact",
+      Referenciák: "/#testimonails",
+      Kapcsolat: "/#contact",
     },
-    Hasznos: { Segítségközpont: "#", Integrációk: "#", Changelog: "#" },
+    //Hasznos: { Segítségközpont: "#", Integrációk: "#", Changelog: "#" },
     Jog: { ÁSZF: "/doc/terms", Adatkezelés: "/doc/privacy" },
   };
 
@@ -46,6 +50,7 @@ const Footer = () => {
                   <motion.a
                     key={index}
                     href={social.href}
+                    target="_blank"
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
                     className="size-9 border border-border/60 text-muted-foreground  flex items-center justify-center hover:text-foreground transition-colors"

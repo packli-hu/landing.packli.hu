@@ -221,7 +221,7 @@ const Contact = () => {
                           <FormLabel>Üzenet</FormLabel>
                           <FormControl>
                             <Textarea
-                              placeholder="Örülünk, ha megosztod velünk, mit vársz a legjobban a Packli szolgáltatásaiból."
+                              placeholder="Írd le röviden, milyen kérdésed van a Packli szolgáltatásaival kapcsolatban."
                               className="min-h-[120px]"
                               {...field}
                             />

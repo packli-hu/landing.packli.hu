@@ -29,6 +29,9 @@ export default function InitialForm({ data, setData, calculateOffer }) {
 
   return (
     <>
+      <h3 className="text-2xl font-semibold mb-6 text-gray-900 dark:text-gray-100">
+        Árajánlat egy kattintással
+      </h3>
       <p className="mb-8">
         Egyedi ajánlatunk tartalmazza a GLS, az MPL, a DPD, a Packeta és a
         FoxPost árait is. Csak add meg webshopod átlagos havi csomagszámát,

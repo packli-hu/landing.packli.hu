@@ -4,6 +4,8 @@ import { FormattedMessage, FormattedNumber, useIntl } from "react-intl";
 import { Card, CardContent } from "@/components/ui/card";
 import { Copy } from "lucide-react";
 import { toast } from "sonner";
+import { Button } from "../ui/button";
+import Link from "next/link";
 
 export default function PricingTable({
   providers,
@@ -29,7 +31,7 @@ export default function PricingTable({
     partnerandlocker: "lots-shopping",
   };
 
-  const { formatMessage } = useIntl();
+  const { formatMessage, formatNumber } = useIntl();
 
   return (
     <section className="py-24 bg-zinc-50 dark:bg-zinc-950 border-b border-border/50">
@@ -37,8 +39,8 @@ export default function PricingTable({
         {voucher && (
           <Card className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/15 dark:to-indigo-900/15 p-6 border border-border/50 shadow-sm">
             <CardContent className="text-center">
-              Ajánlatodat a regisztráció során az alábbi kedvezmény kóddal tudod
-              érvényesíteni:
+              A személyre szabott, kedvezményes ajánlatunk elfdogadásához a
+              regisztráció során használd az alábbi kupont:
               <br />
               <div
                 className="p-2.5 border border-dashed mt-5 inline-block cursor-pointer"
@@ -51,6 +53,12 @@ export default function PricingTable({
                   {voucher?.code ?? "N/A"}
                 </span>
               </div>
+              <br />
+              <Button className="mt-5">
+                <Link href={"https://app.packli.hu/register"} target="_blank">
+                  Regisztrálok
+                </Link>
+              </Button>
             </CardContent>
           </Card>
         )}
@@ -138,15 +146,15 @@ export default function PricingTable({
 
             <Card>
               <CardContent>
-                <div className="scrollable-x-auto -mt-3 pt-3">
-                  <table className="table table-border-e table-border-b table-fixed [&_tr:nth-of-type(2)>td]:table-border-t">
+                <div class="relative overflow-x-auto">
+                  <table className="table table-fixed w-full">
                     <thead>
                       <tr>
                         <th className="!bg-transparent"></th>
                         {Object.keys(
                           pricing.internal[selectedProvider].services
                         ).map((key, value) => (
-                          <th className="table-border-s table-border-t !border-b-0 !p-5 !pt-7.5">
+                          <th className="table-border-s table-border-t !border-b-0 !p-5 !pt-7.5 text-left">
                             <KeenIcon
                               icon={
                                 SERVICE_ICONS[key.replace("plus-", "")] ?? null
@@ -171,7 +179,7 @@ export default function PricingTable({
                       {Object.keys(
                         pricing.internal[selectedProvider].weights
                       ).map((value, key) => (
-                        <tr key={key} className="even:bg-light-active">
+                        <tr key={key} className="even:bg-muted">
                           <td className="table-border-s max-w-[12%] !px-5 !py-3.5">
                             <div className="text-2sm font-medium leading-none ">
                               {pricing.internal[selectedProvider].weights[
@@ -297,15 +305,15 @@ export default function PricingTable({
 
             <Card>
               <CardContent>
-                <div className="scrollable-x-auto -mt-3 pt-3">
-                  <table className="table table-border-e table-border-b table-fixed [&_tr:nth-of-type(2)>td]:table-border-t">
+                <div class="relative overflow-x-auto">
+                  <table className="table table-fixed w-full">
                     <thead>
                       <tr>
                         <th className="!bg-transparent"></th>
                         {Object.keys(
                           pricing.external[selectedProvider].weights
                         ).map((value, key) => (
-                          <th className="text-mono table-border-s table-border-t mt-2.5 !border-b-0 !p-5 font-bold">
+                          <th className="text-mono table-border-s table-border-t mt-2.5 !border-b-0 !p-5 font-bold text-left">
                             {pricing.external[selectedProvider].weights[
                               key - 1
                             ] ?? 0}{" "}
@@ -319,7 +327,7 @@ export default function PricingTable({
                       {Object.keys(pricing.external[selectedProvider].services)
                         .sort()
                         .map((key) => (
-                          <tr key={key} className="even:bg-light-active">
+                          <tr key={key} className="even:bg-muted">
                             <td className="table-border-s !px-5 !py-3.5">
                               <div className="text-right text-2sm font-medium leading-none ">
                                 <FormattedMessage
@@ -471,32 +479,36 @@ export default function PricingTable({
 
         <Card>
           <CardContent>
-            <table className="table table-border-e table-border-b table-fixed [&_tr:nth-of-type(2)>td]:table-border-t">
-              <thead>
-                <tr>
-                  <th className="table-border-s table-border-t !p-3.5 text-right font-bold">
-                    {currency.short_text}
-                  </th>
-                  {pricing.fuel_surcharge.steps.map((v, k) => (
-                    <th className="table-border-s table-border-t !p-3.5 text-center font-bold">
-                      {k == 0
-                        ? "<= " + v
-                        : [1 + pricing.fuel_surcharge.steps[k - 1], v].join(
-                            " - "
-                          )}
+            <div class="relative overflow-x-auto">
+              <table className="table table-fixed w-full">
+                <thead>
+                  <tr>
+                    <th className="table-border-s table-border-t !p-3.5 text-right font-bold">
+                      {currency.short_text}
                     </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td className="table-border-s !p-3.5 text-right">%</td>
-                  {pricing.fuel_surcharge.extra_cost_percent.map((v, k) => (
-                    <td className="table-border-s !p-3.5 text-center">{v} %</td>
-                  ))}
-                </tr>
-              </tbody>
-            </table>
+                    {pricing.fuel_surcharge.steps.map((v, k) => (
+                      <th className="table-border-s table-border-t !p-3.5 text-center font-bold">
+                        {k == 0
+                          ? "<= " + v
+                          : [1 + pricing.fuel_surcharge.steps[k - 1], v].join(
+                              " - "
+                            )}
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td className="table-border-s !p-3.5 text-right">%</td>
+                    {pricing.fuel_surcharge.extra_cost_percent.map((v, k) => (
+                      <td className="table-border-s !p-3.5 text-center">
+                        {v} %
+                      </td>
+                    ))}
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </CardContent>
         </Card>
 
@@ -508,7 +520,7 @@ export default function PricingTable({
             <div className="flex items-center gap-2 text-sm font-normal ">
               <FormattedMessage
                 id={"CONTRACT.COD.HEADER.DESCRIPTION"}
-                values={{ maximum: pricing.cod.maximum }}
+                values={{ maximum: formatNumber(pricing.cod.maximum) }}
               />
             </div>
           </div>
@@ -516,47 +528,51 @@ export default function PricingTable({
 
         <Card>
           <CardContent>
-            <table className="table table-border-e table-border-b table-fixed [&_tr:nth-of-type(2)>td]:table-border-t">
-              <thead>
-                <tr>
-                  <th className="table-border-s table-border-t !p-3.5 text-right font-bold">
-                    <FormattedMessage id={"CONTRACT.COD.TABLE.AMOUNT.TITLE"} />
-                  </th>
-                  {pricing.cod.steps.map((v, k) => (
-                    <th className="table-border-s table-border-t !p-3.5 text-center font-bold">
-                      {k == pricing.cod.steps.length - 1
-                        ? ">= " + v + currency.short_text
-                        : [v, pricing.cod.steps[k + 1] - 1].join(" - ") +
-                          currency.short_text}
+            <div class="relative overflow-x-auto">
+              <table className="table table-fixed w-full">
+                <thead>
+                  <tr>
+                    <th className="table-border-s table-border-t !p-3.5 text-right font-bold">
+                      <FormattedMessage
+                        id={"CONTRACT.COD.TABLE.AMOUNT.TITLE"}
+                      />
                     </th>
-                  ))}
-                  <th className="table-border-s table-border-t !p-3.5 text-center font-bold">
-                    <FormattedMessage
-                      id={"CONTRACT.COD.TABLE.CREDITCARD.TITLE"}
-                    />
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td className="table-border-s !p-3.5 text-right">
-                    <FormattedMessage id={"CONTRACT.COD.TABLE.PRICE.TITLE"} />
-                  </td>
-                  {pricing.cod.fee.map((v, k) => (
-                    <td className="table-border-s !p-3.5 text-center">
-                      + {Math.ceil(v * (1 - discount / 100))}{" "}
-                      {currency.short_text}
+                    {pricing.cod.steps.map((v, k) => (
+                      <th className="table-border-s table-border-t !p-3.5 text-center font-bold">
+                        {k == pricing.cod.steps.length - 1
+                          ? ">= " + v + currency.short_text
+                          : [v, pricing.cod.steps[k + 1] - 1].join(" - ") +
+                            currency.short_text}
+                      </th>
+                    ))}
+                    <th className="table-border-s table-border-t !p-3.5 text-center font-bold">
+                      <FormattedMessage
+                        id={"CONTRACT.COD.TABLE.CREDITCARD.TITLE"}
+                      />
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td className="table-border-s !p-3.5 text-right">
+                      <FormattedMessage id={"CONTRACT.COD.TABLE.PRICE.TITLE"} />
                     </td>
-                  ))}
-                  <td className="table-border-s !p-3.5 text-center">
-                    + {pricing.cod.over_max} %
-                  </td>
-                  <td className="table-border-s !p-3.5 text-center">
-                    + {pricing.cod.creditcard} %
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+                    {pricing.cod.fee.map((v, k) => (
+                      <td className="table-border-s !p-3.5 text-center">
+                        + {Math.ceil(v * (1 - discount / 100))}{" "}
+                        {currency.short_text}
+                      </td>
+                    ))}
+                    <td className="table-border-s !p-3.5 text-center">
+                      + {pricing.cod.over_max} %
+                    </td>
+                    <td className="table-border-s !p-3.5 text-center">
+                      + {pricing.cod.creditcard} %
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </CardContent>
         </Card>
       </div>

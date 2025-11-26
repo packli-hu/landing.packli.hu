@@ -117,9 +117,9 @@ const Header = () => {
           <nav className="hidden md:flex items-center space-x-8">
             {/* Nav items */}
             {Object.keys(navItems).map((key: string, index: number) => (
-              <motion.button
+              <motion.a
                 key={key}
-                onClick={() => handleNavClick(key)}
+                href={"/#" + key}
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: (index + 2) * 0.1 }}
@@ -136,11 +136,11 @@ const Header = () => {
                     isActiveItem(key) ? "w-full" : "w-0 group-hover:w-full"
                   }`}
                 ></span>
-              </motion.button>
+              </motion.a>
             ))}
 
             <Button variant="default">
-              <Link href={"https://app.packli.hu/register"}>Próbáld ki!</Link>
+              <Link href={"#offer"}>Árajánaltot kérek</Link>
             </Button>
           </nav>
 

@@ -186,17 +186,6 @@ const Hero = () => {
           >
             <Button
               size="lg"
-              className="cursor-pointer hover:[&_svg]:translate-x-1"
-              asChild
-            >
-              <Link href={"https://app.packli.hu/register"}>
-                Ingyenes regisztráció
-                <ArrowRight className="h-5 w-5 transition-transform" />
-              </Link>
-            </Button>
-
-            <Button
-              size="lg"
               variant="outline"
               className="cursor-pointer w-46"
               asChild
