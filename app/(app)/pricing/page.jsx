@@ -2,7 +2,7 @@
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import PricingTable from "../../../components/pricing/pricing-table";
 import { IntlProvider } from "react-intl";
 import { useSearchParams } from "next/navigation";
@@ -12,7 +12,7 @@ export default function Page() {
 
   const searchParams = useSearchParams();
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     setPricingData(false);
     axios
       .get(`/api/pricing?voucher=${searchParams.get("voucher") ?? null}`)
