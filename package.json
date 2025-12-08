@@ -1,5 +1,5 @@
 {
-  "name": "metronic-landing-saas",
+  "name": "packli-landing",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -44,7 +44,7 @@
     "framer-motion": "^12.16.0",
     "lucide-react": "^0.514.0",
     "motion": "^12.16.0",
-    "next": "15.3.3",
+    "next": "^16.0.7",
     "next-themes": "^0.4.6",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
@@ -66,7 +66,7 @@
     "@types/react-dom": "^19.1.6",
     "@types/react-google-recaptcha": "^2.1.9",
     "eslint": "^9.28.0",
-    "eslint-config-next": "15.3.3",
+    "eslint-config-next": "^16.0.7",
     "tailwindcss": "^4.1.8",
     "typescript": "^5.8.3"
   }
