@@ -140,7 +140,7 @@ const Header = () => {
             ))}
 
             <Button variant="default">
-              <Link href={"#offer"}>Árajánaltot kérek</Link>
+              <Link href={"#offer"}>Árajánlatot kérek</Link>
             </Button>
           </nav>
 
