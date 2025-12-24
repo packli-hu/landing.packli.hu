@@ -112,7 +112,7 @@ const Footer = () => {
               rel="noopener noreferrer"
               className="text-foreground hover:text-indigo-600 hover:underline"
             >
-              Cronos Global Kft
+              Packli Logistics Kft
             </a>
           </p>
         </div>
