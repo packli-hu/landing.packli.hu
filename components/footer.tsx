@@ -18,7 +18,7 @@ const Footer = () => {
     "A Packliról": {
       Ajánlatkérés: "/#offer",
       "Hatékony csomagszállítás": "#features",
-      Referenciák: "/#testimonails",
+      Referenciák: "/#testimonials",
       Kapcsolat: "/#contact",
     },
     //Hasznos: { Segítségközpont: "#", Integrációk: "#", Changelog: "#" },
@@ -41,8 +41,8 @@ const Footer = () => {
                 <Logo />
               </div>
               <p className="text-muted-foreground mb-6 max-w-sm">
-                Egy felület, több szállítási partner, számtalan szolgáltatás a
-                Packlival a csomagküldésed olcsóbbá és akár teljesen
+                Egy felület, több szállítási partner, számtalan szolgáltatás - a
+                Packlival webshopod csomagszállítása olcsóbbá és akár teljesen
                 automatikussá válhat.
               </p>
               <div className="flex space-x-4">

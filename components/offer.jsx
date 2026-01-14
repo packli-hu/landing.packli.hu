@@ -73,7 +73,7 @@ const Offer = () => {
       className="py-24 bg-zinc-50 dark:bg-zinc-950 border-b border-border/50"
     >
       <div className="container mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto items-stretch">
           {/* Contact Information */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -101,10 +101,11 @@ const Offer = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
+            className="h-full"
           >
-            <Card className="border-border/50">
+            <Card className="border-border/50 h-full">
               <CardContent
-                className="p-8 py-4"
+                className="p-8 py-4 h-full flex flex-col justify-center"
                 key={acquisitionState + "-state"}
               >
                 {acquisitionState == "details" ? (

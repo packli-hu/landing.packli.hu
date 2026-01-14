@@ -12,47 +12,82 @@ import { CustomSubtitle } from "@/components/custom/subtitle";
 const FAQ = () => {
   const faqs = [
     {
-      question: "What's included in the free trial?",
+      question: "Mi az a Packli, és hogyan segíti a webshopomat?",
       answer:
-        "All plans include a 14-day free trial with full access to all features. No credit card required to start your trial.",
+        "A Packli egy logisztikai aggregátor, amely elérhetővé teszi a legnagyobb hazai és nemzetközi futárszolgálatokat a webshopod számára.",
     },
     {
-      question: "Can I change my plan anytime?",
+      question: "Milyen futárszolgálatokkal dolgozik együtt a Packli?",
       answer:
-        "Yes, you can upgrade or downgrade your plan at any time. Changes take effect immediately, and we'll prorate the billing accordingly.",
+        "Jelenleg elérhető szállítási partnerek: MPL, GLS, DPD, Packeta, Foxpost.",
     },
     {
-      question: "What payment methods do you accept?",
+      question:
+        "Kell-e külön szerződést kötnöm minden egyes futárszolgálattal?",
       answer:
-        "We accept all major credit cards (Visa, MasterCard, American Express), PayPal, and bank transfers for annual plans.",
+        "Nem, elegendő egyetlen szerződés a Packlival, és máris használhatod az összes partnerünk szolgáltatását.",
     },
     {
-      question: "Is there a setup fee?",
+      question: "Miért éri ez meg nekem?",
       answer:
-        "No, there are no setup fees or hidden costs. You only pay for your chosen plan, and the price includes everything listed in the features.",
+        "Kevesebb adminisztráció, egyszerűbb logisztika, több szállítási opció a vásárlóidnak, automatizációk integrációkon keresztül. Mindezt alacsonyabb árakon, mint ha egyesével szerződnél a futárszolgálatokkal.",
     },
     {
-      question: "Do you offer refunds?",
+      question: "Hogyan szerződhetek a Packlival?",
       answer:
-        "Yes, we offer a 30-day money-back guarantee. If you're not satisfied with our service, we'll provide a full refund within 30 days of purchase.",
+        "Add meg a havi várható csomagszámodat az ajánlatkérő oldalon, és már láthatod is az aktuális ártáblát. Egy gyors regisztráció után azonnal feladhatod az első csomagodat. Magasabb csomagszám esetén egyedi kedvezményeket biztosítunk.",
     },
     {
-      question: "How does the yearly discount work?",
+      question: "Milyen webshop-motorokkal kapcsolható össze a Packli?",
       answer:
-        "When you choose yearly billing, you get 2 months free (equivalent to a 20% discount). The discount is applied automatically to your total.",
+        "A Packli több népszerű webshop-motorhoz is biztosít integrációt. A pontosan támogatott rendszerek listája a Packli weboldalán érhető el.",
     },
     {
-      question: "Can I cancel my subscription anytime?",
+      question: "Mennyi időt vesz igénybe az integráció beállítása?",
       answer:
-        "Yes, you can cancel your subscription at any time. Your service will continue until the end of your current billing period.",
+        "Az integráció bekapcsolása egy egyszerű, néhány lépésből álló folyamat. Minden technikai segítséget megadunk, akár néhány perc alatt is elkészülhetsz vele.",
     },
     {
-      question: "Do you offer custom enterprise solutions?",
+      question: "Van-e lehetőség API-n keresztüli összekötésre?",
       answer:
-        "Absolutely! For large organizations with specific needs, we offer custom pricing and features. Contact our sales team to discuss your requirements.",
+        "Igen, a Packli fejlesztőbarát API-t biztosít az egyedi igények kiszolgálására.",
+    },
+    {
+      question: "Lehetséges-e külföldre csomagot küldeni?",
+      answer:
+        "Igen, minden EU-s tagállamba vállalunk kiszállítást. Az adminisztráció és az elszámolás ugyanolyan egyszerű, mint belföldi csomagok esetén, havi gyűjtőszámlával.",
+    },
+    {
+      question: "Hogyan működik a cserecsomag és a visszaküldés kezelése?",
+      answer:
+        "A Packli felületén néhány kattintással generálhatsz visszaküldési címkét vagy indíthatsz cserecsomag folyamatot.",
+    },
+    {
+      question: "Mikor kapom meg az utánvét összegeket?",
+      answer:
+        "Az utánvéteket hetente utaljuk, de az 50 000 Ft-os limit elérése esetén akár már a következő munkanapon megérkezhet az összeg.",
+    },
+    {
+      question: "Milyen költségekkel kell számolnom? Van-e havidíj?",
+      answer:
+        "Nincs havidíj vagy rejtett költség. Csak az egyes kiszállítások díját kell fizetned, amelyeket átlátható módon követhetsz.",
+    },
+    {
+      question: "Hogyan kapom meg a számlát a szállításokról?",
+      answer:
+        "Minden szállítópartner költségeiről egyetlen, átlátható havi gyűjtőszámlát állítunk ki.",
+    },
+    {
+      question: "Kihez fordulhatok, ha probléma merül fel egy csomaggal?",
+      answer:
+        "Személyes kapcsolattartót biztosítunk, aki intézi a reklamációkat, így nem kell a különböző futárszolgálatok ügyfélszolgálatával egyeztetned.",
+    },
+    {
+      question: "Van-e biztosítás a csomagokon?",
+      answer:
+        "Igen, 50 000 Ft-os értékhatárig a küldemény értékével megegyező kártérítés jár. Magasabb érték esetén külön díjas biztosítás igényelhető.",
     },
   ];
-
   return (
     <section className="py-24 bg-background" id="faq">
       <div className="container mx-auto px-6">
@@ -63,13 +98,12 @@ const FAQ = () => {
           viewport={{ once: true }}
           className="flex items-center justify-center flex-col text-center gap-5 mb-25"
         >
-          <CustomBadge>FAQ</CustomBadge>
+          <CustomBadge>GYIK</CustomBadge>
 
-          <CustomTitle>Frequently Asked Questions</CustomTitle>
+          <CustomTitle>Gyakran Ismételt Kérdések</CustomTitle>
 
           <CustomSubtitle>
-            Got questions? We&apos;ve got answers. Here are the most common
-            questions about our pricing and service.
+            Kérdésed van? Itt vannak a válaszaink.
           </CustomSubtitle>
         </motion.div>
 
