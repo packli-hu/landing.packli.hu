@@ -21,7 +21,10 @@ const Footer = () => {
       Referenciák: "/#testimonials",
       Kapcsolat: "/#contact",
     },
-    //Hasznos: { Segítségközpont: "#", Integrációk: "#", Changelog: "#" },
+    Hasznos: {
+      Segítségközpont: "https://docs.packli.hu/",
+      Csomagkövetés: "https://tracking.packli.hu",
+    },
     Jog: { ÁSZF: "/doc/terms", Adatkezelés: "/doc/privacy" },
   };
 
