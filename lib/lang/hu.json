@@ -354,7 +354,7 @@
   "CONTRACT.SERVICES.HEADER.TITLE": "Szolgáltatók",
   "CONTRACT.SERVICES.HEADER.DESCRIPTION": "Az MPL háznál történő felvétel és a DPD, GLS szolgáltatás egyedi egyeztetést követően érhető el.",
   "CONTRACT.INTERNAL.HEADER.TITLE": "Belföldi csomagküldés",
-  "CONTRACT.INTERNAL.HEADER.DESCRIPTION": "Szolgáltatásaink díjai nettóban értendők, és az alábbi tételekből állnak össze: alapdíj, az abból kalkulált üzemanyagfelár, valamint az esetleges kiegészítő szolgáltatások díjai.",
+  "CONTRACT.INTERNAL.HEADER.DESCRIPTION": "Szolgáltatásaink díjai nettóban értendők, és az alábbi tételekből állnak össze: alapdíj, az abból kalkulált üzemanyagfelár, valamint az esetleges kiegészítő szolgáltatások díjai",
   "CONTRACT.EXTERNAL.HEADER.TITLE": "Export csomagküldés",
   "CONTRACT.EXTERNAL.HEADER.DESCRIPTION": "Nemzetközi csaomgküldés DPD-vel",
   "CONTRACT.EXTRA_SERVICES.HEADER.TITLE": "Kiegészítő szolgáltatások",

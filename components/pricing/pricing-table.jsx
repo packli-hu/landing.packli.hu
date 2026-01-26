@@ -41,7 +41,7 @@ export default function PricingTable({
             <Card className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/15 dark:to-indigo-900/15 p-6 border border-border/50 shadow-sm">
               <CardContent className="text-center">
                 A személyre szabott, kedvezményes ajánlatunk elfdogadásához a
-                regisztráció során használd az alábbi kupont:
+                regisztráció során használd az alábbi kupont
                 <br />
                 <div
                   className="p-2.5 border border-dashed mt-5 inline-block cursor-pointer"
@@ -153,33 +153,35 @@ export default function PricingTable({
                         <tr>
                           <th className="!bg-transparent"></th>
                           {Object.keys(
-                            pricing.internal[selectedProvider].services
-                          ).map((key, value) => (
-                            <th className="table-border-s table-border-t !border-b-0 !p-5 !pt-7.5 text-left">
-                              <KeenIcon
-                                icon={
-                                  SERVICE_ICONS[key.replace("plus-", "")] ??
-                                  null
-                                }
-                                className="text-2xl "
-                                style="outline"
-                              />
-                              <div className="text-mono mt-2.5 text-md font-medium">
-                                <FormattedMessage
-                                  id={
-                                    "SERVICE." +
-                                    key.replace("plus-", "").toUpperCase()
+                            pricing.internal[selectedProvider].services,
+                          )
+                            .filter((k) => !k.includes("plus-"))
+                            .map((key, value) => (
+                              <th className="table-border-s table-border-t !border-b-0 !p-5 !pt-7.5 text-left">
+                                <KeenIcon
+                                  icon={
+                                    SERVICE_ICONS[key.replace("plus-", "")] ??
+                                    null
                                   }
+                                  className="text-2xl "
+                                  style="outline"
                                 />
-                                {key.includes("plus") && <> (Packli+)</>}
-                              </div>
-                            </th>
-                          ))}
+                                <div className="text-mono mt-2.5 text-md font-medium">
+                                  <FormattedMessage
+                                    id={
+                                      "SERVICE." +
+                                      key.replace("plus-", "").toUpperCase()
+                                    }
+                                  />
+                                  {key.includes("plus") && <> (Packli+)</>}
+                                </div>
+                              </th>
+                            ))}
                         </tr>
                       </thead>
                       <tbody>
                         {Object.keys(
-                          pricing.internal[selectedProvider].weights
+                          pricing.internal[selectedProvider].weights,
                         ).map((value, key) => (
                           <tr key={key} className="even:bg-muted">
                             <td className="table-border-s max-w-[12%] !px-5 !py-3.5">
@@ -197,27 +199,29 @@ export default function PricingTable({
                               </div>
                             </td>
                             {Object.keys(
-                              pricing.internal[selectedProvider].services
-                            ).map((k, v) => (
-                              <td className="table-border-s !px-5 !py-3.5">
-                                {pricing.internal[selectedProvider].services[k][
-                                  value
-                                ] ? (
-                                  <>
-                                    <FormattedNumber
-                                      value={Math.ceil(
-                                        pricing.internal[selectedProvider]
-                                          .services[k][value] *
-                                          (1 - discount / 100)
-                                      )}
-                                    />{" "}
-                                    {currency.short_text}
-                                  </>
-                                ) : (
-                                  "---"
-                                )}
-                              </td>
-                            ))}
+                              pricing.internal[selectedProvider].services,
+                            )
+                              .filter((k) => !k.includes("plus-"))
+                              .map((k, v) => (
+                                <td className="table-border-s !px-5 !py-3.5">
+                                  {pricing.internal[selectedProvider].services[
+                                    k
+                                  ][value] ? (
+                                    <>
+                                      <FormattedNumber
+                                        value={Math.ceil(
+                                          pricing.internal[selectedProvider]
+                                            .services[k][value] *
+                                            (1 - discount / 100),
+                                        )}
+                                      />{" "}
+                                      {currency.symbol}
+                                    </>
+                                  ) : (
+                                    "---"
+                                  )}
+                                </td>
+                              ))}
                           </tr>
                         ))}
                       </tbody>
@@ -237,18 +241,13 @@ export default function PricingTable({
                             id={"CONTRACT.EXTRA_SERVICES.HEADER.TITLE"}
                           />
                         </h1>
-                        <div className="flex items-center gap-2 text-sm font-normal ">
-                          <FormattedMessage
-                            id={"CONTRACT.EXTRA_SERVICES.HEADER.DESCRIPTION"}
-                          />
-                        </div>
                       </div>
                     </div>
                     <Card className="border-border/50">
                       <CardContent className="p-8 py-4">
                         <ul>
                           {Object.keys(
-                            pricing.internal[selectedProvider].extra_services
+                            pricing.internal[selectedProvider].extra_services,
                           ).map((service) => (
                             <li className="mb-5">
                               <h3 className="font-medium ">
@@ -258,8 +257,8 @@ export default function PricingTable({
                                     service.toUpperCase() +
                                     ".TITLE"
                                   }
-                                />{" "}
-                                (
+                                />
+                                {": "}
                                 {pricing.internal[selectedProvider]
                                   .extra_services[service][0] == "percent"
                                   ? pricing.internal[selectedProvider]
@@ -267,13 +266,12 @@ export default function PricingTable({
                                   : Math.ceil(
                                       pricing.internal[selectedProvider]
                                         .extra_services[service][1] *
-                                        (1 - discount / 100)
+                                        (1 - discount / 100),
                                     )}
                                 {pricing.internal[selectedProvider]
                                   .extra_services[service][0] == "percent"
                                   ? "%"
-                                  : " " + currency.short_text}
-                                )
+                                  : " " + currency.symbol}
                               </h3>
                               <p className="text-sm ">
                                 <FormattedMessage
@@ -317,7 +315,7 @@ export default function PricingTable({
                         <tr>
                           <th className="!bg-transparent"></th>
                           {Object.keys(
-                            pricing.external[selectedProvider].weights
+                            pricing.external[selectedProvider].weights,
                           ).map((value, key) => (
                             <th className="text-mono table-border-s table-border-t mt-2.5 !border-b-0 !p-5 font-bold text-left">
                               {pricing.external[selectedProvider].weights[
@@ -332,7 +330,7 @@ export default function PricingTable({
                       </thead>
                       <tbody>
                         {Object.keys(
-                          pricing.external[selectedProvider].services
+                          pricing.external[selectedProvider].services,
                         )
                           .sort()
                           .map((key) => (
@@ -349,7 +347,7 @@ export default function PricingTable({
                                 </div>
                               </td>
                               {Object.keys(
-                                pricing.external[selectedProvider].weights
+                                pricing.external[selectedProvider].weights,
                               ).map((k, v) => (
                                 <td className="table-border-s !px-5 !py-3.5">
                                   {pricing.external[selectedProvider].services[
@@ -360,10 +358,10 @@ export default function PricingTable({
                                         value={Math.ceil(
                                           pricing.external[selectedProvider]
                                             .services[key]["homedelivery"][k] *
-                                            (1 - discount / 100)
+                                            (1 - discount / 100),
                                         )}
                                       />{" "}
-                                      {currency.short_text}
+                                      {currency.symbol}
                                     </>
                                   ) : (
                                     "---"
@@ -401,7 +399,7 @@ export default function PricingTable({
                       <CardContent className="p-8 py-4">
                         <ul>
                           {Object.keys(
-                            pricing.external[selectedProvider].extra_services
+                            pricing.external[selectedProvider].extra_services,
                           ).map((service) => (
                             <li className="mb-5">
                               <h3 className="font-medium ">
@@ -420,12 +418,12 @@ export default function PricingTable({
                                   : Math.ceil(
                                       pricing.external[selectedProvider]
                                         .extra_services[service][1] *
-                                        (1 - discount / 100)
+                                        (1 - discount / 100),
                                     )}
                                 {pricing.external[selectedProvider]
                                   .extra_services[service][0] == "percent"
                                   ? "%"
-                                  : " " + currency.short_text}
+                                  : " " + currency.symbol}
                                 )
                               </h3>
                               <p className="text-sm ">
@@ -452,11 +450,6 @@ export default function PricingTable({
               <h1 className="text-xl font-medium leading-none ">
                 <FormattedMessage id={"CONTRACT.INSURANCE.HEADER.TITLE"} />
               </h1>
-              <div className="flex items-center gap-2 text-sm font-normal ">
-                <FormattedMessage
-                  id={"CONTRACT.INSURANCE.HEADER.DESCRIPTION"}
-                />
-              </div>
             </div>
           </div>
 
@@ -467,9 +460,9 @@ export default function PricingTable({
                   id={"CONTRACT.INSURANCE.DESCRIPTION"}
                   values={{
                     ...pricing.insurance,
-                    currency: currency.short_text,
+                    currency: currency.symbol,
                     fee: Math.ceil(
-                      pricing.insurance.fee * (1 - discount / 100)
+                      pricing.insurance.fee * (1 - discount / 100),
                     ),
                   }}
                 />
@@ -497,14 +490,14 @@ export default function PricingTable({
                   <thead>
                     <tr>
                       <th className="table-border-s table-border-t !p-3.5 text-right font-bold">
-                        {currency.short_text}
+                        {currency.symbol}
                       </th>
                       {pricing.fuel_surcharge.steps.map((v, k) => (
                         <th className="table-border-s table-border-t !p-3.5 text-center font-bold">
                           {k == 0
                             ? "<= " + v
                             : [1 + pricing.fuel_surcharge.steps[k - 1], v].join(
-                                " - "
+                                " - ",
                               )}
                         </th>
                       ))}
@@ -552,10 +545,17 @@ export default function PricingTable({
                       </th>
                       {pricing.cod.steps.map((v, k) => (
                         <th className="table-border-s table-border-t !p-3.5 text-center font-bold">
-                          {k == pricing.cod.steps.length - 1
-                            ? ">= " + v + currency.short_text
-                            : [v, pricing.cod.steps[k + 1] - 1].join(" - ") +
-                              currency.short_text}
+                          {k == pricing.cod.steps.length - 1 ? (
+                            ">= " + v + " " + currency.symbol
+                          ) : (
+                            <>
+                              <FormattedNumber value={v} /> -{" "}
+                              <FormattedNumber
+                                value={pricing.cod.steps[k + 1] - 1}
+                              />{" "}
+                              {currency.symbol}
+                            </>
+                          )}
                         </th>
                       ))}
                       <th className="table-border-s table-border-t !p-3.5 text-center font-bold">
@@ -575,7 +575,7 @@ export default function PricingTable({
                       {pricing.cod.fee.map((v, k) => (
                         <td className="table-border-s !p-3.5 text-center">
                           + {Math.ceil(v * (1 - discount / 100))}{" "}
-                          {currency.short_text}
+                          {currency.symbol}
                         </td>
                       ))}
                       <td className="table-border-s !p-3.5 text-center">
