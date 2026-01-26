@@ -25,7 +25,10 @@ const Footer = () => {
       Segítségközpont: "https://docs.packli.hu/",
       Csomagkövetés: "https://tracking.packli.hu",
     },
-    Jog: { ÁSZF: "/doc/terms", Adatkezelés: "/doc/privacy" },
+    Jog: {
+      ÁSZF: "https://docs.packli.hu/legal/terms",
+      Adatkezelés: "https://docs.packli.hu/legal/privacy",
+    },
   };
 
   return (
