@@ -15,10 +15,10 @@ const Testimonials = () => {
         "https://images.unsplash.com/photo-1649972904349-6e44c42644a7?w=100&h=100&fit=crop&crop=face",
     },
     {
-      name: "Kristóf Edina",
-      role: "@Keridekor",
+      name: "Gáspár Glass Kft",
+      role: "@GáspárGlass",
       content:
-        "Nagy segítség, hogy személyesen jöttök el a csomagpontos küldeményeimért, ezzel sok időt takarítok meg. Szeretem, hogy több szolgáltatóval dolgoztok együtt, és hogy külföldre is elfogadható árakkal szállítotok.",
+        "Több éve dolgozunk már együtt, és Gittáék segítőkészsége felénk maximális, bármilyen problémánk is adódik, akár egy csomaggal, akár a csomagfeladó felület kezelésével, rögtön megkapjuk tőlük a segítséget. Kedves, barátságos hozzáállásukkal segítik folyamatosan a munkánkat. Csak jót tudok mondani a velük folytatott munkáról.",
       avatar:
         "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=100&h=100&fit=crop&crop=face",
     },
