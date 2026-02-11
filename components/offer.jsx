@@ -19,45 +19,49 @@ const Offer = () => {
   });
 
   const calculateOffer = (data) => {
-    if (data.parcelCount <= 30) {
-      axios
-        .post("/api/acquisition", {
-          parcel_count: data.parcelCount,
-        })
-        .then((response) => {
-          if (response.data?.voucher) {
-            window.location.replace(
-              "/pricing?voucher=" + response.data.voucher
-            );
-            return;
-          }
+    return new Promise((resolve, reject) => {
+      if (data.parcelCount <= 30) {
+        axios
+          .post("/api/acquisition", {
+            parcel_count: data.parcelCount,
+          })
+          .then((response) => {
+            if (response.data?.voucher) {
+              window.location.replace(
+                "/pricing?voucher=" + response.data.voucher,
+              );
+              return;
+            }
 
-          toast.success("Ajánlatodat hamarosan megkapod....");
-        })
-        .catch((e) => {
-          console.log("e", e);
-          toast.error("Valami hiba történt!");
-        });
-    } else {
-      if (acquisitionState != "details") {
-        setAcquisitionState("details");
-        return;
+            toast.success("Ajánlatodat hamarosan megkapod....");
+          })
+          .catch((e) => {
+            console.log("e", e);
+            toast.error("Valami hiba történt!");
+          });
+      } else {
+        if (acquisitionState != "details") {
+          setAcquisitionState("details");
+          return;
+        }
+
+        axios
+          .post("/api/acquisition", {
+            parcel_count: formData.parcelCount,
+            ...data,
+          })
+          .then((response) => {
+            toast.success("Ajánlatoddal hamarosan megkeresünk! Köszönjük!");
+            confetti();
+            return resolve();
+          })
+          .catch((e) => {
+            console.log("e", e);
+            toast.error("Valami hiba történt!");
+            return reject();
+          });
       }
-
-      axios
-        .post("/api/acquisition", {
-          parcel_count: formData.parcelCount,
-          ...data,
-        })
-        .then((response) => {
-          toast.success("Ajánlatoddal hamarosan megkeresünk! Köszönjük!");
-          confetti();
-        })
-        .catch((e) => {
-          console.log("e", e);
-          toast.error("Valami hiba történt!");
-        });
-    }
+    });
   };
 
   const setData = (field, value) => {

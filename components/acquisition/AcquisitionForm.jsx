@@ -11,6 +11,7 @@ import {
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
+import { useState } from "react";
 
 export default function AcquisitionForm({ data, setData, calculateOffer }) {
   const formSchema = z.object({
@@ -26,6 +27,8 @@ export default function AcquisitionForm({ data, setData, calculateOffer }) {
     defaultValues: {},
   });
 
+  const [loading, setLoading] = useState(false);
+
   return (
     <>
       <p>
@@ -37,10 +40,15 @@ export default function AcquisitionForm({ data, setData, calculateOffer }) {
         szolgáltatásainkat. Ezért munkatársunk 2 munkanapon belül felveszi veled
         a kapcsolatot személyesen is.
       </p>
-      <Form {...form} key={"details-form"}>
+      <Form {...form} key={"details-form"} id="AcquisitionForm">
         <form
           onSubmit={form.handleSubmit((e) => {
-            calculateOffer(e);
+            setLoading(true);
+            calculateOffer(e).finally(() => {
+              setLoading(false);
+            });
+
+            form.reset();
           })}
           className="space-y-6"
         >
@@ -124,8 +132,10 @@ export default function AcquisitionForm({ data, setData, calculateOffer }) {
             size="lg"
             type="submit"
             className="w-full cursor-pointer mb-5"
+            disabled={loading}
+            id="AcquisitionFormButton"
           >
-            Elküldöm
+            {loading ? "Küldés..." : "Elküldöm"}
           </Button>
 
           <small className="text-gray-400">
