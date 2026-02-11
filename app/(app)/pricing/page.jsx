@@ -38,6 +38,7 @@ export default function Page() {
             discount={pricingData.discount}
             currency={pricingData.currency}
             voucher={pricingData.voucher}
+            fuelFee={pricingData?.fuel_fee ?? 0}
           />
         )}
       </IntlProvider>

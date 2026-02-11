@@ -353,10 +353,16 @@
   "CONTRACT.SERVICES.HEADER.DISCLAMER": "Az árak nettóban értendők és az ÁFA-t nem tartalmazzák. A kedvezmény a szállítás alapdíjára és a felárakra is érvényes, a tényleges árak a kerekítési eltérések miatt +/- 2 Ft-tal eltérhetnek a feltüntetettől.",
   "CONTRACT.SERVICES.HEADER.TITLE": "Szolgáltatók",
   "CONTRACT.SERVICES.HEADER.DESCRIPTION": "Az MPL háznál történő felvétel és a DPD, GLS szolgáltatás egyedi egyeztetést követően érhető el.",
-  "CONTRACT.INTERNAL.HEADER.TITLE": "Belföldi csomagküldés",
-  "CONTRACT.INTERNAL.HEADER.DESCRIPTION": "Szolgáltatásaink díjai nettóban értendők, és az alábbi tételekből állnak össze: alapdíj, az abból kalkulált üzemanyagfelár, valamint az esetleges kiegészítő szolgáltatások díjai",
+
+  "CONTRACT.INTERNAL.HEADER.SIMPLE.TITLE": "Belföldi csomagküldés",
+  "CONTRACT.INTERNAL.HEADER.SIMPLE.DESCRIPTION": "Szolgáltatásaink díjai nettóban értendők, minden felárat tartalmaznak. Ezen felül csak a kiegészítő szolgáltatások, az utánvétkezelés és az esetleges felülbiztosítás díját kell megfizetned.",
+
+  "CONTRACT.INTERNAL.HEADER.EXTENDED.TITLE": "Belföldi csomagküldés alapdíjai",
+  "CONTRACT.INTERNAL.HEADER.EXTENDED.DESCRIPTION": "Szolgáltatásaink díjai nettóban értendők nem tartalmazzák az üzemanyagfelárat és a kiegészítő szolgűltatások díjait.",
+
   "CONTRACT.EXTERNAL.HEADER.TITLE": "Export csomagküldés",
-  "CONTRACT.EXTERNAL.HEADER.DESCRIPTION": "Nemzetközi csaomgküldés DPD-vel",
+  "CONTRACT.EXTERNAL.HEADER.DESCRIPTION": "Nemzetközi csaomgküldés",
+
   "CONTRACT.EXTRA_SERVICES.HEADER.TITLE": "Kiegészítő szolgáltatások",
   "CONTRACT.EXTRA_SERVICES.HEADER.DESCRIPTION": "Feláras többletszolgáltatások",
   "CONTRACT.FUEL_SURCHARGE.HEADER.TITLE": "Üzemanyagfelár",

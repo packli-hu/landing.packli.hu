@@ -13,8 +13,11 @@ export default function PricingTable({
   discount,
   currency,
   voucher,
+  fuelFee,
 }) {
   const [selectedProvider, setSelectedProvider] = useState(providers[0].slug);
+
+  const [extendedView, setExtendedView] = useState(false);
 
   const SERVICE_ICONS = {
     is_fragile: "milk",
@@ -41,7 +44,7 @@ export default function PricingTable({
             <Card className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-900/15 dark:to-indigo-900/15 p-6 border border-border/50 shadow-sm">
               <CardContent className="text-center">
                 A személyre szabott, kedvezményes ajánlatunk elfdogadásához a
-                regisztráció során használd az alábbi kupont
+                regisztráció során használd az alábbi kedvezménykódot
                 <br />
                 <div
                   className="p-2.5 border border-dashed mt-5 inline-block cursor-pointer"
@@ -63,6 +66,32 @@ export default function PricingTable({
               </CardContent>
             </Card>
           )}
+
+          <label className="inline-flex items-center cursor-pointer">
+            <input
+              type="checkbox"
+              className="sr-only peer"
+              checked={!extendedView}
+              onChange={(e) => setExtendedView(!e.currentTarget.checked)}
+            />
+
+            <div
+              className="
+      relative w-11 h-6 bg-secondary
+      transition-colors duration-300
+      peer-checked:bg-[#3C38C4]
+      after:content-['']
+      after:absolute after:top-[2px] after:left-[2px]
+      after:w-5 after:h-5 after:bg-white
+      after:transition-transform after:duration-300
+      peer-checked:after:translate-x-5
+    "
+            />
+
+            <span className="ml-3 text-sm font-medium">
+              Egyszerűsített nézet
+            </span>
+          </label>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 2xl:grid-cols-6 gap-2.5">
             {providers.map((provider, index) => (
@@ -135,11 +164,21 @@ export default function PricingTable({
               <div className="mt-10 flex flex-wrap items-center justify-between gap-5 lg:items-end">
                 <div className="flex flex-col justify-center gap-2">
                   <h1 className="text-xl font-medium leading-none ">
-                    <FormattedMessage id={"CONTRACT.INTERNAL.HEADER.TITLE"} />
+                    <FormattedMessage
+                      id={
+                        extendedView
+                          ? "CONTRACT.INTERNAL.HEADER.EXTENDED.TITLE"
+                          : "CONTRACT.INTERNAL.HEADER.SIMPLE.TITLE"
+                      }
+                    />
                   </h1>
                   <div className="flex items-center gap-2 text-sm font-normal ">
                     <FormattedMessage
-                      id={"CONTRACT.INTERNAL.HEADER.DESCRIPTION"}
+                      id={
+                        extendedView
+                          ? "CONTRACT.INTERNAL.HEADER.EXTENDED.DESCRIPTION"
+                          : "CONTRACT.INTERNAL.HEADER.SIMPLE.DESCRIPTION"
+                      }
                     />
                   </div>
                 </div>
@@ -212,6 +251,9 @@ export default function PricingTable({
                                         value={Math.ceil(
                                           pricing.internal[selectedProvider]
                                             .services[k][value] *
+                                            (1 +
+                                              (extendedView ? 0 : fuelFee) /
+                                                100) *
                                             (1 - discount / 100),
                                         )}
                                       />{" "}
@@ -297,11 +339,21 @@ export default function PricingTable({
               <div className="mt-10 flex flex-wrap items-center justify-between gap-5 lg:items-end">
                 <div className="flex flex-col justify-center gap-2">
                   <h1 className="text-xl font-medium leading-none ">
-                    <FormattedMessage id={"CONTRACT.EXTERNAL.HEADER.TITLE"} />
+                    <FormattedMessage
+                      id={
+                        extendedView
+                          ? "CONTRACT.EXTERNAL.HEADER.TITLE"
+                          : "CONTRACT.EXTERNAL.HEADER.TITLE"
+                      }
+                    />
                   </h1>
                   <div className="flex items-center gap-2 text-sm font-normal ">
                     <FormattedMessage
-                      id={"CONTRACT.EXTERNAL.HEADER.DESCRIPTION"}
+                      id={
+                        extendedView
+                          ? "CONTRACT.INTERNAL.HEADER.EXTENDED.DESCRIPTION"
+                          : "CONTRACT.INTERNAL.HEADER.SIMPLE.DESCRIPTION"
+                      }
                     />
                   </div>
                 </div>
@@ -358,6 +410,9 @@ export default function PricingTable({
                                         value={Math.ceil(
                                           pricing.external[selectedProvider]
                                             .services[key]["homedelivery"][k] *
+                                            (1 +
+                                              (extendedView ? 0 : fuelFee) /
+                                                100) *
                                             (1 - discount / 100),
                                         )}
                                       />{" "}
@@ -470,53 +525,64 @@ export default function PricingTable({
             </CardContent>
           </Card>
 
-          <div className="mt-10 flex flex-wrap items-center justify-between gap-5 lg:items-end">
-            <div className="flex flex-col justify-center gap-2">
-              <h1 className="text-xl font-medium leading-none ">
-                <FormattedMessage id={"CONTRACT.FUEL_SURCHARGE.HEADER.TITLE"} />
-              </h1>
-              <div className="flex items-center gap-2 text-sm font-normal ">
-                <FormattedMessage
-                  id={"CONTRACT.FUEL_SURCHARGE.HEADER.DESCRIPTION"}
-                />
+          {extendedView && (
+            <>
+              <div className="mt-10 flex flex-wrap items-center justify-between gap-5 lg:items-end">
+                <div className="flex flex-col justify-center gap-2">
+                  <h1 className="text-xl font-medium leading-none ">
+                    <FormattedMessage
+                      id={"CONTRACT.FUEL_SURCHARGE.HEADER.TITLE"}
+                    />
+                  </h1>
+                  <div className="flex items-center gap-2 text-sm font-normal ">
+                    <FormattedMessage
+                      id={"CONTRACT.FUEL_SURCHARGE.HEADER.DESCRIPTION"}
+                    />
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
 
-          <Card>
-            <CardContent>
-              <div className="max-w-full overflow-x-auto">
-                <table className="table w-full min-w-max">
-                  <thead>
-                    <tr>
-                      <th className="table-border-s table-border-t !p-3.5 text-right font-bold">
-                        {currency.symbol}
-                      </th>
-                      {pricing.fuel_surcharge.steps.map((v, k) => (
-                        <th className="table-border-s table-border-t !p-3.5 text-center font-bold">
-                          {k == 0
-                            ? "<= " + v
-                            : [1 + pricing.fuel_surcharge.steps[k - 1], v].join(
-                                " - ",
-                              )}
-                        </th>
-                      ))}
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td className="table-border-s !p-3.5 text-right">%</td>
-                      {pricing.fuel_surcharge.extra_cost_percent.map((v, k) => (
-                        <td className="table-border-s !p-3.5 text-center">
-                          {v} %
-                        </td>
-                      ))}
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </CardContent>
-          </Card>
+              <Card>
+                <CardContent>
+                  <div className="max-w-full overflow-x-auto">
+                    <table className="table w-full min-w-max">
+                      <thead>
+                        <tr>
+                          <th className="table-border-s table-border-t !p-3.5 text-right font-bold">
+                            {currency.symbol}
+                          </th>
+                          {pricing.fuel_surcharge.steps.map((v, k) => (
+                            <th className="table-border-s table-border-t !p-3.5 text-center font-bold">
+                              {k == 0
+                                ? "<= " + v
+                                : [
+                                    1 + pricing.fuel_surcharge.steps[k - 1],
+                                    v,
+                                  ].join(" - ")}
+                            </th>
+                          ))}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td className="table-border-s !p-3.5 text-right">
+                            %
+                          </td>
+                          {pricing.fuel_surcharge.extra_cost_percent.map(
+                            (v, k) => (
+                              <td className="table-border-s !p-3.5 text-center">
+                                {v} %
+                              </td>
+                            ),
+                          )}
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </CardContent>
+              </Card>
+            </>
+          )}
 
           <div className="mt-10 flex flex-wrap items-center justify-between gap-5 lg:items-end">
             <div className="flex flex-col justify-center gap-2">
