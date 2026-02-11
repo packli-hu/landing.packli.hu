@@ -74,6 +74,7 @@ export default function PricingTable({
               checked={!extendedView}
               onChange={(e) => setExtendedView(!e.currentTarget.checked)}
             />
+            <span className="mr-3 text-sm font-medium">Részletes nézet</span>
 
             <div
               className="
@@ -184,7 +185,7 @@ export default function PricingTable({
                 </div>
               </div>
 
-              <Card>
+              <Card className={extendedView ? "" : "bg-[#3C38C4] text-white"}>
                 <CardContent>
                   <div className="max-w-full overflow-x-auto">
                     <table className="table w-full min-w-max">
@@ -222,7 +223,14 @@ export default function PricingTable({
                         {Object.keys(
                           pricing.internal[selectedProvider].weights,
                         ).map((value, key) => (
-                          <tr key={key} className="even:bg-muted">
+                          <tr
+                            key={key}
+                            className={
+                              !extendedView
+                                ? "even:bg-[#2B287E]"
+                                : "even:bg-muted"
+                            }
+                          >
                             <td className="table-border-s max-w-[12%] !px-5 !py-3.5">
                               <div className="text-2sm font-medium leading-none ">
                                 {pricing.internal[selectedProvider].weights[
@@ -359,7 +367,7 @@ export default function PricingTable({
                 </div>
               </div>
 
-              <Card>
+              <Card className={extendedView ? "" : "bg-[#3C38C4] text-white"}>
                 <CardContent>
                   <div className="max-w-full overflow-x-auto">
                     <table className="table w-full min-w-max">
@@ -386,7 +394,14 @@ export default function PricingTable({
                         )
                           .sort()
                           .map((key) => (
-                            <tr key={key} className="even:bg-muted">
+                            <tr
+                              key={key}
+                              className={
+                                !extendedView
+                                  ? "even:bg-[#2B287E]"
+                                  : "even:bg-muted"
+                              }
+                            >
                               <td className="table-border-s !px-5 !py-3.5">
                                 <div className="text-right text-2sm font-medium leading-none ">
                                   <FormattedMessage
