@@ -9,6 +9,7 @@ import {
   ReplaceAll,
   Earth,
   Calculator,
+  ChartBarIcon,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "./ui/button";
@@ -17,11 +18,11 @@ import Link from "next/link";
 const Features = () => {
   const features = [
     {
-      id: "packliplus",
-      icon: Plus,
-      title: "Packli+ csomagfelvétel",
+      id: "pricing",
+      icon: ChartBarIcon,
+      title: "Kiszámítható díjazás",
       description:
-        "Dedikált kiállást biztosítunk Pest megyében, így minden szolgáltató küldeményét egyszerre vesszük fel telephelyedről.",
+        "A szolgáltatók díjszabását egységes logika mentén hangoltuk össze, hogy az árak könnyen átláthatók és összehasonlíthatók legyenek",
       colors: {
         bg: "bg-blue-100/40 dark:bg-blue-950/40",
         icon: "text-blue-600",
@@ -130,7 +131,7 @@ const Features = () => {
               <Card
                 className={cn(
                   "h-full bg-background border border-border transition-all duration-500 p-8 relative overflow-hidden hover:shadow-lg",
-                  feature.colors.hover
+                  feature.colors.hover,
                 )}
               >
                 <CardContent className="p-0">
@@ -139,13 +140,13 @@ const Features = () => {
                     <div
                       className={cn(
                         "size-12  flex items-center justify-center group-hover:scale-110 transition-all duration-500 relative overflow-hidden",
-                        feature.colors.bg
+                        feature.colors.bg,
                       )}
                     >
                       <feature.icon
                         className={cn(
                           "size-5 relative z-10",
-                          feature.colors.icon
+                          feature.colors.icon,
                         )}
                       />
                     </div>
@@ -166,7 +167,7 @@ const Features = () => {
                   className={cn(
                     "absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left",
                     feature.colors.gradient,
-                    feature.colors.gradient
+                    feature.colors.gradient,
                   )}
                 />
 
