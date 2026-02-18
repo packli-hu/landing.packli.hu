@@ -16,7 +16,7 @@ export default function Page() {
     setPricingData(false);
     axios
       .get(
-        `/api/pricing?voucher=${searchParams.get("voucher") ?? null}&uhash=${searchParams.get("uhash") ?? null}`,
+        `/api/pricing?voucher=${searchParams.get("voucher") ?? null}&uhash=${searchParams.get("uhash") ?? null}&date=${searchParams.get("date") ?? null}`,
       )
       .then((response) => {
         if (response?.data) {

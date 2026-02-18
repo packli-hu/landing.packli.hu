@@ -5,10 +5,11 @@ export async function GET(req: NextRequest) {
   try {
     const voucher = req.nextUrl.searchParams.get("voucher");
     const userHash = req.nextUrl.searchParams.get("uhash");
+    const date = req.nextUrl.searchParams.get("date");
 
     const response = await axios.post(
       "https://app.packli.hu/api/landing/pricing",
-      { voucher, userHash },
+      { voucher, userHash, date },
     );
     return NextResponse.json(response.data, { status: response.status });
   } catch (e) {
