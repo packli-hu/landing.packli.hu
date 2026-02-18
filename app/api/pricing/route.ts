@@ -4,10 +4,11 @@ import { NextResponse, NextRequest } from "next/server";
 export async function GET(req: NextRequest) {
   try {
     const voucher = req.nextUrl.searchParams.get("voucher");
+    const userHash = req.nextUrl.searchParams.get("uhash");
 
     const response = await axios.post(
       "https://app.packli.hu/api/landing/pricing",
-      { voucher }
+      { voucher, userHash },
     );
     return NextResponse.json(response.data, { status: response.status });
   } catch (e) {

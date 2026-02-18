@@ -15,7 +15,9 @@ export default function Page() {
   useLayoutEffect(() => {
     setPricingData(false);
     axios
-      .get(`/api/pricing?voucher=${searchParams.get("voucher") ?? null}`)
+      .get(
+        `/api/pricing?voucher=${searchParams.get("voucher") ?? null}&uhash=${searchParams.get("uhash") ?? null}`,
+      )
       .then((response) => {
         if (response?.data) {
           setPricingData(response?.data);
