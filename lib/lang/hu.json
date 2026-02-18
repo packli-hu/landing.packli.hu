@@ -358,7 +358,7 @@
   "CONTRACT.INTERNAL.HEADER.SIMPLE.DESCRIPTION": "Szolgáltatásaink díjai nettóban értendők, minden felárat tartalmaznak. Ezen felül csak a kiegészítő szolgáltatások, az utánvétkezelés és az esetleges felülbiztosítás díját kell megfizetned.",
 
   "CONTRACT.INTERNAL.HEADER.EXTENDED.TITLE": "Belföldi csomagküldés alapdíjai",
-  "CONTRACT.INTERNAL.HEADER.EXTENDED.DESCRIPTION": "Szolgáltatásaink díjai nettóban értendők nem tartalmazzák az üzemanyagfelárat és a kiegészítő szolgűltatások díjait.",
+  "CONTRACT.INTERNAL.HEADER.EXTENDED.DESCRIPTION": "Szolgáltatásaink díjai nettóban értendők nem tartalmazzák az üzemanyagfelárat és a kiegészítő szolgáltatások díjait.",
 
   "CONTRACT.EXTERNAL.HEADER.TITLE": "Export csomagküldés",
   "CONTRACT.EXTERNAL.HEADER.DESCRIPTION": "Nemzetközi csaomgküldés",
