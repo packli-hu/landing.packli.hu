@@ -607,7 +607,11 @@ export default function PricingTable({
               <div className="flex items-center gap-2 text-sm font-normal ">
                 <FormattedMessage
                   id={"CONTRACT.COD.HEADER.DESCRIPTION"}
-                  values={{ maximum: formatNumber(pricing.cod.maximum) }}
+                  values={{
+                    maximum: formatNumber(
+                      (pricing.cod[selectedProvider] ?? pricing.cod).maximum,
+                    ),
+                  }}
                 />
               </div>
             </div>
@@ -624,21 +628,31 @@ export default function PricingTable({
                           id={"CONTRACT.COD.TABLE.AMOUNT.TITLE"}
                         />
                       </th>
-                      {pricing.cod.steps.map((v, k) => (
-                        <th className="table-border-s table-border-t !p-3.5 text-center font-bold">
-                          {k == pricing.cod.steps.length - 1 ? (
-                            ">= " + v + " " + currency.symbol
-                          ) : (
-                            <>
-                              <FormattedNumber value={v} /> -{" "}
-                              <FormattedNumber
-                                value={pricing.cod.steps[k + 1] - 1}
-                              />{" "}
-                              {currency.symbol}
-                            </>
-                          )}
-                        </th>
-                      ))}
+                      {(pricing.cod[selectedProvider] ?? pricing.cod).steps.map(
+                        (v, k) => (
+                          <th className="table-border-s table-border-t !p-3.5 text-center font-bold">
+                            {k ==
+                            (pricing.cod[selectedProvider] ?? pricing.cod).steps
+                              .length -
+                              1 ? (
+                              ">= " + v + " " + currency.symbol
+                            ) : (
+                              <>
+                                <FormattedNumber value={v} /> -{" "}
+                                <FormattedNumber
+                                  value={
+                                    (
+                                      pricing.cod[selectedProvider] ??
+                                      pricing.cod
+                                    ).steps[k + 1] - 1
+                                  }
+                                />{" "}
+                                {currency.symbol}
+                              </>
+                            )}
+                          </th>
+                        ),
+                      )}
                       <th className="table-border-s table-border-t !p-3.5 text-center font-bold">
                         <FormattedMessage
                           id={"CONTRACT.COD.TABLE.CREDITCARD.TITLE"}
@@ -653,17 +667,29 @@ export default function PricingTable({
                           id={"CONTRACT.COD.TABLE.PRICE.TITLE"}
                         />
                       </td>
-                      {pricing.cod.fee.map((v, k) => (
-                        <td className="table-border-s !p-3.5 text-center">
-                          + {Math.ceil(v * (1 - discount / 100))}{" "}
-                          {currency.symbol}
-                        </td>
-                      ))}
+                      {(pricing.cod[selectedProvider] ?? pricing.cod).fee.map(
+                        (v, k) => (
+                          <td className="table-border-s !p-3.5 text-center">
+                            + {Math.ceil(v * (1 - discount / 100))}{" "}
+                            {currency.symbol}
+                          </td>
+                        ),
+                      )}
                       <td className="table-border-s !p-3.5 text-center">
-                        + {pricing.cod.over_max} %
+                        +{" "}
+                        {
+                          (pricing.cod[selectedProvider] ?? pricing.cod)
+                            .over_max
+                        }{" "}
+                        %
                       </td>
                       <td className="table-border-s !p-3.5 text-center">
-                        + {pricing.cod.creditcard} %
+                        +{" "}
+                        {
+                          (pricing.cod[selectedProvider] ?? pricing.cod)
+                            .creditcard
+                        }{" "}
+                        %
                       </td>
                     </tr>
                   </tbody>
