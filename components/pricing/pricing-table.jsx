@@ -529,10 +529,13 @@ export default function PricingTable({
                 <FormattedMessage
                   id={"CONTRACT.INSURANCE.DESCRIPTION"}
                   values={{
-                    ...pricing.insurance,
+                    ...(pricing.insurance[selectedProvider] ??
+                      pricing.insurance),
                     currency: currency.symbol,
                     fee: Math.ceil(
-                      pricing.insurance.fee * (1 - discount / 100),
+                      (pricing.insurance[selectedProvider] ?? pricing.insurance)
+                        .fee *
+                        (1 - discount / 100),
                     ),
                   }}
                 />
