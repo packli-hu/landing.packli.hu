@@ -17,7 +17,7 @@ export default function PricingTable({
 }) {
   const [selectedProvider, setSelectedProvider] = useState(providers[0].slug);
 
-  const [extendedView, setExtendedView] = useState(false);
+  const [extendedView, setExtendedView] = useState(true);
 
   const SERVICE_ICONS = {
     is_fragile: "milk",
