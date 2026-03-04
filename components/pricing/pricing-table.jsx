@@ -74,7 +74,6 @@ export default function PricingTable({
               checked={!extendedView}
               onChange={(e) => setExtendedView(!e.currentTarget.checked)}
             />
-            <span className="mr-3 text-sm font-medium">Részletes nézet</span>
 
             <div
               className="
@@ -82,8 +81,8 @@ export default function PricingTable({
       transition-colors duration-300
       peer-checked:bg-[#3C38C4]
       after:content-['']
-      after:absolute after:top-[2px] after:left-[2px]
-      after:w-5 after:h-5 after:bg-white
+      after:absolute after:top-[6px] after:left-[6px]
+      after:w-3 after:h-3 after:bg-white
       after:transition-transform after:duration-300
       peer-checked:after:translate-x-5
     "
@@ -93,6 +92,16 @@ export default function PricingTable({
               Egyszerűsített nézet
             </span>
           </label>
+
+          <p>
+            <FormattedMessage
+              id={
+                extendedView
+                  ? "CONTRACT.INTERNAL.HEADER.EXTENDED.DESCRIPTION"
+                  : "CONTRACT.INTERNAL.HEADER.SIMPLE.DESCRIPTION"
+              }
+            />
+          </p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 2xl:grid-cols-6 gap-2.5">
             {providers.map((provider, index) => (
@@ -173,15 +182,6 @@ export default function PricingTable({
                       }
                     />
                   </h1>
-                  <div className="flex items-center gap-2 text-sm font-normal ">
-                    <FormattedMessage
-                      id={
-                        extendedView
-                          ? "CONTRACT.INTERNAL.HEADER.EXTENDED.DESCRIPTION"
-                          : "CONTRACT.INTERNAL.HEADER.SIMPLE.DESCRIPTION"
-                      }
-                    />
-                  </div>
                 </div>
               </div>
 
@@ -355,15 +355,6 @@ export default function PricingTable({
                       }
                     />
                   </h1>
-                  <div className="flex items-center gap-2 text-sm font-normal ">
-                    <FormattedMessage
-                      id={
-                        extendedView
-                          ? "CONTRACT.INTERNAL.HEADER.EXTENDED.DESCRIPTION"
-                          : "CONTRACT.INTERNAL.HEADER.SIMPLE.DESCRIPTION"
-                      }
-                    />
-                  </div>
                 </div>
               </div>
 
