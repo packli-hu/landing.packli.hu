@@ -24,6 +24,7 @@ const Footer = () => {
     Hasznos: {
       Segítségközpont: "https://docs.packli.hu/",
       Csomagkövetés: "https://tracking.packli.hu",
+      Blog: "https://blog.packli.hu",
     },
     Jog: {
       ÁSZF: "https://docs.packli.hu/legal/terms",
